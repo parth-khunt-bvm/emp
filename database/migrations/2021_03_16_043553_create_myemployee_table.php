@@ -24,10 +24,6 @@ class CreateMyemployeeTable extends Migration
             $table->string("mobileno");
             $table->string("emergencyno");
             $table->enum('gender',['F','M','O'])->default(NULl)->nullable();
-            $table->string("education");
-            $table->string("passingyear");
-            $table->string("institute");
-            $table->string("experience");
             $table->text("address");
             $table->integer("country");
             $table->integer("state");
@@ -35,15 +31,6 @@ class CreateMyemployeeTable extends Migration
             $table->integer("department");
             $table->integer("designation");
             $table->integer("salary");
-            $table->date("doj");
-            $table->string("aadharcard");
-            $table->string("pancard");
-            $table->string("bankname");
-            $table->string("branchname");
-            $table->string("ifsccode");
-            $table->string("accountno");
-            $table->string("pfno");
-            $table->string("esino");
             $table->timestamps();
         });
     }

@@ -2,15 +2,15 @@
 @php
 
 $currentRoute = Route::current()->getName();
-$logodetails = getdetails();
+
 @endphp
 <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
     <!--begin::Brand-->
     <div class="brand flex-column-auto" id="kt_brand" style="background-color: white">
         <!--begin::Logo-->
         <a href="{{  route('employee-dashboard') }}" class="brand-logo">
-            <img alt="Logo" src="{{ asset('public/upload/details/'.$logodetails[0]->logo) }}"
-                style="width: 135px;height: 30px;" />
+            <img alt="Logo" src="{{ asset('public/upload/details/bvminfo.png') }}"
+                style="width: 100%;height: 50px;" />
         </a>
         <!--end::Logo-->
         <!--begin::Toggle-->

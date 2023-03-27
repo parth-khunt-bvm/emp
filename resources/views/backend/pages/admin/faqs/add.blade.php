@@ -4,7 +4,7 @@
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
-    <div class="container">
+    <div class="container-fluid">
         <!--begin::Dashboard-->
         <!--begin::Row-->
         <div class="row">
@@ -22,13 +22,13 @@
                     <div class="card-body">
 
                         <div class="form-group ">
-                            <label class="col-form-label ">Question 
+                            <label class="col-form-label ">Question
                             <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="question" name="question"  placeholder="Please enter question"/>
                         </div>
 
                         <div class="form-group ">
-                            <label class="col-form-label ">Answer 
+                            <label class="col-form-label ">Answer
                             <span class="text-danger">*</span></label>
                             <textarea class="form-control" id="details" name="answer" placeholder="Please enter answer"></textarea>
                         </div>

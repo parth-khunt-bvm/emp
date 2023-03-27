@@ -11,9 +11,9 @@ var EmployeeList = function() {
             'ajaxAction': 'getdatatable',
             'postData': dataArr,
             'hideColumnList': [],
-            'noSortingApply': [0,2,10],
-            'noSearchApply': [0,2,10],
-            'defaultSortColumn': [8],
+            'noSortingApply': [0,2,9],
+            'noSearchApply': [0,2,9],
+            'defaultSortColumn': [0],
             'defaultSortOrder': 'DESC',
             'setColumnWidth': columnWidth
         };
@@ -47,8 +47,52 @@ var EmployeeList = function() {
     }
 
     var add = function() {
+        var form = $('#add-employee');
+        var rules = {
+            empMobileNo: { required: true, minlength: 10, maxlength: 10 },
+            empEmrNo: { minlength: 10, maxlength: 10 },
+            empNo: { required: true },
+            empEmail: { required: true, email: true },
+            empFirstName: { required: true },
+            empLastName: { required: true },
+            empDob: { required: true },
+            empgender: { required: true },
+            empSalary: { required: true },
+            empDepartment: { required: true },
+            empDesignation: { required: true },
+            empAddress: { required: true },
+            empCountry: { required: true },
+            empState: { required: true },
+            empCity: { required: true },
+
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form, true);
+        });
     };
     var edit = function() {
+        var form = $('#edit-employee');
+        var rules = {
+            empMobileNo: { required: true, minlength: 10, maxlength: 10 },
+            empEmrNo: { minlength: 10, maxlength: 10 },
+            empNo: { required: true },
+            empEmail: { required: true, email: true },
+            empFirstName: { required: true },
+            empLastName: { required: true },
+            empDob: { required: true },
+            empgender: { required: true },
+            empSalary: { required: true },
+            empDepartment: { required: true },
+            empDesignation: { required: true },
+            empAddress: { required: true },
+            empCountry: { required: true },
+            empState: { required: true },
+            empCity: { required: true },
+
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form, true);
+        });
     };
 
     return {

@@ -15,7 +15,7 @@ class AddNotesMyemployeeTable extends Migration
     {
         Schema::table('myemployee', function (Blueprint $table) {
             //
-            $table->text("notes")->nullable()->after('esino');
+            $table->text("notes")->nullable()->after('salary');
             $table->enum('is_deleted',['Y','N'])->default('N')->comments("Y for Yes , N for No")->after('notes');
 
         });

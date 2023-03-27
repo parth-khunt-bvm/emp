@@ -4,7 +4,7 @@
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
-    <div class="container">
+    <div class="container-fluid">
         <!--begin::Dashboard-->
         <!--begin::Row-->
         <div class="row">
@@ -62,7 +62,7 @@
                         <div class="col-12">
                             <div class="row">
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Month<span class="text-danger">*</span></label>
                                         <select class="form-control" name="month" id="month">
@@ -83,10 +83,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Year<span class="text-danger">*</span></label>
-                                        <select class="form-control" name="year" id="year" disabled=true>
+                                        <select class="form-control" name="year" id="year" >
                                             <option  value="">Select Salary Slip Year </option>
 
                                             @for($i = 2015; $i <= date("Y") ; $i++)
@@ -96,165 +96,80 @@
                                     </div>
                                 </div>
 
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <h3 class="card-title" >WORKING DETAILS</h3>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-4">
+                                <div class="col-2">
                                     <div class="form-group">
-                                        <label class="" for="exampleSelect1">WD <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="wd" value="0" name="wd">
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>WO <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="wo" value="0" name="wo">
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>PH <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="ph" value="0" name="ph">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="" for="exampleSelect1">PD <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="pd" value="0" name="pd">
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>LWP <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="lwp" value="0" name="lwp">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-12">
-                            <h3 class="card-title" >EARNING DETAILS</h3>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="" for="exampleSelect1">BASIC <span class="text-danger">*</span></label>
+                                        <label class="" for="exampleSelect1">BASIC SALARY <span class="text-danger">*</span></label>
                                         <input class="form-control " type="number" id="basic" value="0" name="basic">
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-2">
                                     <div class="form-group">
-                                        <label>HRA <span class="text-danger">*</span></label>
+                                        <label class="" for="exampleSelect1">WORKING DAY <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="wd" value="0" name="wd">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <h3 class="card-title" >Estimated Tax</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Estimated Tax(%) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="ext_tax_pr" value="0" name="ext_tax_pr">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Estimated Tax(Amount) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="ext_tax" value="0" name="ext_tax">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <h3 class="card-title" >HOUSE RENT ALLOWANCE</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>HOUSE RENT ALLOWANCE(%) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="hra_pr" value="0" name="hra_pr">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>HOUSE RENT ALLOWANCE(Amount) <span class="text-danger">*</span></label>
                                         <input class="form-control " type="number" id="hra" value="0" name="hra">
                                     </div>
                                 </div>
 
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>LEAVE ENCASH <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="leave_encash" value="0" name="leave_encash">
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
 
+
                         <div class="col-12">
+                            <h3 class="card-title" >PROFESSIONAL Tax</h3>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label class="" for="exampleSelect1">PRODUC <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="produc" value="0" name="produc">
+                                        <label>PROFESSIONAL Tax(%) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="pro_tax_pr" value="0" name="pro_tax_pr">
                                     </div>
                                 </div>
-
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label>CONVEI <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="convei" value="0" name="convei">
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>TRANSPORT <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="transport" value="0" name="transport">
+                                        <label>PROFESSIONAL Tax(Amount) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="pro_tax" value="0" name="pro_tax">
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-
-
-                        <div class="col-12">
-                            <h3 class="card-title" >DEDUCTION DETAILS</h3>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="" for="exampleSelect1">P.F. <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="pf" value="0" name="pf">
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>ESI <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="esi" value="0" name="esi">
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>P.T. <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="pt" value="0" name="pt">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="" for="exampleSelect1">TDS <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="tds" value="0" name="tds">
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>OTHER DEDUCTION<span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="other" value="0" name="other">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
 
                         <div class="card-footer" style="padding-left: 15px !important">
                             <button type="submit" class="btn btn-primary font-weight-bold mr-2">Create Salary Slip</button>

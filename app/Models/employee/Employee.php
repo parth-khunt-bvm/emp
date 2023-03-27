@@ -26,7 +26,6 @@ class Employee extends Model
             5 => 'myemployee.mobileno',
             6 => 'myemployee.emergencyno',
             7 => 'myemployee.dob',
-            8 => 'myemployee.doj',
         );
         $query = Employee ::from('myemployee')
                     ->where("myemployee.is_deleted","N");
@@ -56,7 +55,7 @@ class Employee extends Model
 
         $resultArr = $query->skip($requestData['start'])
                 ->take($requestData['length'])
-                ->select('myemployee.id','myemployee.gender','myemployee.dob','myemployee.doj','myemployee.emp_no','myemployee.image','myemployee.firstname','myemployee.lastname','myemployee.email','myemployee.mobileno','myemployee.emergencyno')
+                ->select('myemployee.id','myemployee.gender','myemployee.dob','myemployee.emp_no','myemployee.image','myemployee.firstname','myemployee.lastname','myemployee.email','myemployee.mobileno','myemployee.emergencyno')
                 ->get();
         $data = array();
 
@@ -104,7 +103,6 @@ class Employee extends Model
             $nestedData[] = $row['mobileno'];
             $nestedData[] = $row['emergencyno'];
             $nestedData[] = date("d/m/Y",strtotime($row['dob']));
-            $nestedData[] = date("d/m/Y",strtotime($row['doj']));
             $nestedData[] = $actionhtml;
             $data[] = $nestedData;
         }
@@ -138,10 +136,6 @@ class Employee extends Model
             $objEmployee->mobileno = $request->input('empMobileNo');
             $objEmployee->emergencyno = $request->input('empEmrNo');
             $objEmployee->gender = $request->input('empgender');
-            $objEmployee->education = $request->input('empEducation');
-            $objEmployee->passingyear = $request->input('empPassingYear');
-            $objEmployee->institute = $request->input('empCollageName');
-            $objEmployee->experience = $request->input('empExperience');
             $objEmployee->address = $request->input('empAddress');
             $objEmployee->country = $request->input('empCountry');
             $objEmployee->state = $request->input('empState');
@@ -149,22 +143,12 @@ class Employee extends Model
             $objEmployee->department = $request->input('empDepartment');
             $objEmployee->designation = $request->input('empDesignation');
             $objEmployee->salary = $request->input('empSalary');
-            $objEmployee->doj = date("Y-m-d",strtotime($request->input('empDoj')));
-            $objEmployee->aadharcard = $request->input('empAadharCard');
-            $objEmployee->pancard = $request->input('empPanCard');
-            $objEmployee->bankname = $request->input('empBank');
-            $objEmployee->branchname = $request->input('empBranch');
-            $objEmployee->ifsccode = $request->input('empIfsc');
-            $objEmployee->accountno = $request->input('empAccount');
-            $objEmployee->pfno = $request->input('empPfno');
-            $objEmployee->esino = $request->input('empEsl');
             $objEmployee->notes = $request->input('empnotes');
             $objEmployee->is_deleted = "N";
             $objEmployee->created_at = date("Y-m-d h:i:s");
             $objEmployee->updated_at = date("Y-m-d h:i:s");
             if($objEmployee->save()){
                 $id = $objEmployee->id;
-
                 $objEmployeeNo = new Employeeno();
                 $empno = $objEmployeeNo->getEmpNo();
                 $cur_emp_no = $empno[0]->no;
@@ -178,9 +162,6 @@ class Employee extends Model
                     DB::table('myemployee')->where('id', $id)->delete();
                     return "wrong";
                 }
-                print_r($objEmployeeNo->save());
-                die();
-                return "true";
             }else{
                 return "wrong";
             }
@@ -211,10 +192,8 @@ class Employee extends Model
     public function viewDetail($id){
         return Employee::select('myemployee.emp_no','myemployee.image','myemployee.firstname','myemployee.lastname',
                                 'myemployee.email','myemployee.dob','myemployee.mobileno','myemployee.emergencyno',
-                                'myemployee.gender','myemployee.education','myemployee.passingyear','myemployee.institute',
-                                'myemployee.experience','myemployee.address','myemployee.salary','myemployee.doj',
-                                'myemployee.aadharcard','myemployee.pancard','myemployee.bankname','myemployee.branchname',
-                                'myemployee.ifsccode','myemployee.accountno','myemployee.pfno','myemployee.esino','myemployee.notes',
+                                'myemployee.gender','myemployee.address','myemployee.salary',
+                                'myemployee.notes',
                                 'employee_department.department','countries.name as country','states.name as state','cities.name as city','employee_designation.designation'
                             )
                             ->join("countries","countries.id","=","myemployee.country")
@@ -250,10 +229,6 @@ class Employee extends Model
             $objEmployee->mobileno = $request->input('empMobileNo');
             $objEmployee->emergencyno = $request->input('empEmrNo');
             $objEmployee->gender = $request->input('empgender');
-            $objEmployee->education = $request->input('empEducation');
-            $objEmployee->passingyear = $request->input('empPassingYear');
-            $objEmployee->institute = $request->input('empCollageName');
-            $objEmployee->experience = $request->input('empExperience');
             $objEmployee->address = $request->input('empAddress');
             $objEmployee->country = $request->input('empCountry');
             $objEmployee->state = $request->input('empState');
@@ -261,15 +236,6 @@ class Employee extends Model
             $objEmployee->department = $request->input('empDepartment');
             $objEmployee->designation = $request->input('empDesignation');
             $objEmployee->salary = $request->input('empSalary');
-            $objEmployee->doj = date("Y-m-d",strtotime($request->input('empDoj')));
-            $objEmployee->aadharcard = $request->input('empAadharCard');
-            $objEmployee->pancard = $request->input('empPanCard');
-            $objEmployee->bankname = $request->input('empBank');
-            $objEmployee->branchname = $request->input('empBranch');
-            $objEmployee->ifsccode = $request->input('empIfsc');
-            $objEmployee->accountno = $request->input('empAccount');
-            $objEmployee->pfno = $request->input('empPfno');
-            $objEmployee->esino = $request->input('empEsl');
             $objEmployee->notes = $request->input('empnotes');
             $objEmployee->updated_at = date("Y-m-d h:i:s");
             if($objEmployee->save()){

@@ -4,7 +4,7 @@
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
-    <div class="container">
+    <div class="container-fluid">
         <!--begin::Dashboard-->
         <!--begin::Row-->
         <div class="row">
@@ -26,17 +26,17 @@
                             <select class="form-control"  id="category_id" name="category_id">
                              <option value="">-- Select -- </option>
                                 @foreach($menu as $key => $value)
-                                <option value="{{ $value->id }}">{{ $value->name }}</option>                                
+                                <option value="{{ $value->id }}">{{ $value->name }}</option>
                                 @endforeach
                             </select>
-                           </div>      
-                   
+                           </div>
+
                         <div class="form-group ">
                             <label class="col-form-label ">Title (Max  : 30 Characters)
                             <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="title" name="title"  placeholder="Please enter title"/>
                         </div>
-                        
+
                         <div class="form-group ">
                             <label class="col-form-label ">Short Description (Max  : 240 Characters)
                             <span class="text-danger">*</span></label>
@@ -44,20 +44,20 @@
                         </div>
 
                         <div class="form-group ">
-                            <label class="col-form-label ">Description 
+                            <label class="col-form-label ">Description
                             <span class="text-danger">*</span></label>
                             <textarea class="form-control" id="details" name="description" placeholder="Please enter  description"></textarea>
                         </div>
-                        
-                        
+
+
                         <div class="form-group ">
                             <label class="col-form-label ">Image (Size : 320px * 225px)
                             <span class="text-danger">*</span></label>
                             <input type="file" accept="image/*" class="form-control" id="image" name="image"/>
                         </div>
-                     
+
                     </div>
-       					
+
 
                     <div class="card-footer">
                         <div class="row">

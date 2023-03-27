@@ -1,6 +1,3 @@
-@php
-$logodetails = getdetails();
-@endphp
 
 @extends('backend.layout.login_layout')
 @section('content')
@@ -15,7 +12,7 @@ $logodetails = getdetails();
             <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
                 <!--begin::Aside header-->
                 <a href="{{ route('admin') }}" class="text-center mb-10">
-                    <img src="{{ asset('public/upload/details/'.$logodetails[0]->logo) }}" class="max-h-120px" alt="KKMT" />
+                    <img src="{{ asset('public/upload/details/bvminfo.png') }}" class="max-h-120px" alt="BVM Infotech" />
                 </a>
                 <!--end::Aside header-->
             </div>

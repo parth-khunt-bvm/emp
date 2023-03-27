@@ -4,7 +4,7 @@
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
-    <div class="container">
+    <div class="container-fluid">
         <!--begin::Dashboard-->
         <!--begin::Row-->
         <div class="row">
@@ -46,7 +46,7 @@
                             <label class="col-form-label ">Description
                             <span class="text-danger">*</span></label>
                             <textarea class="form-control" id="details" name="details" placeholder="Please enter  description">{{  $details[0]->details }}</textarea>
-                        </div>                 
+                        </div>
 
 
 

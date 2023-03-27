@@ -4,7 +4,7 @@
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
-    <div class="container">
+    <div class="container-fluid">
 
         <!--begin::Card-->
         <div class="card card-custom">
@@ -33,7 +33,6 @@
                             <th>Mobile No</th>
                             <th>Emergency Contact No</th>
                             <th>DOB</th>
-                            <th>DOJ</th>
                             <th>Action</th>
                         </tr>
                     </thead>

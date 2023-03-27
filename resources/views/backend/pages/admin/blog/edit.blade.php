@@ -4,7 +4,7 @@
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
-    <div class="container">
+    <div class="container-fluid">
         <!--begin::Dashboard-->
         <!--begin::Row-->
         <div class="row">
@@ -25,7 +25,7 @@
                             <select class="form-control"  id="category_id" name="category_id">
                              <option value="">-- Select -- </option>
                                 @foreach($menu as $key => $value)
-                                <option value="{{ $value->id }}" {{ $value->id == $details[0]->category_id ? "selected='selected'" : "" }}>{{ $value->name }}</option>                                
+                                <option value="{{ $value->id }}" {{ $value->id == $details[0]->category_id ? "selected='selected'" : "" }}>{{ $value->name }}</option>
                                 @endforeach
                             </select>
                            </div>
@@ -39,13 +39,13 @@
                             <span class="text-danger">*</span></label>
                             <textarea class="form-control" id="short_description" name="short_description" placeholder="Please enter short description">{{  $details[0]->short_description }}</textarea>
                         </div>
-            
+
                         <div class="form-group ">
                             <label class="col-form-label ">Description
                             <span class="text-danger">*</span></label>
                             <textarea class="form-control" id="details" name="description" placeholder="Please enter  description">{{  $details[0]->description }}</textarea>
                         </div>
-                        
+
                       <div class="form-group ">
                             <label class="col-form-label ">Image (Size : 320px * 225px)
                                 <span class="text-danger">*</span></label>
@@ -54,7 +54,7 @@
                                 <br><br>
                             <input type="file" accept="image/*" class="form-control" id="image" name="image" />
                         </div>
-                       
+
                     </div>
 
                     <div class="card-footer">

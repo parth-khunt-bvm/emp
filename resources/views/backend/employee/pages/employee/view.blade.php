@@ -3,7 +3,7 @@
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
    <!--begin::Container-->
-   <div class="container">
+   <div class="container-fluid">
       <!--begin::Card-->
       <div class="card card-custom gutter-b">
          <div class="card-body">
@@ -224,60 +224,7 @@
                   <div class="separator separator-solid mt-3"></div>
                </h3>
             </div>
-            <!--begin::Items-->
-            <div class="d-flex align-items-center flex-wrap mt-8">
-               <div class="col-xl-12">
-                  <div class="row">
-                     <div class="col-xl-3">
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                           <div class="d-flex flex-column text-dark-75">
-                              <span class="font-weight-bolder font-size-sm">Education</span>
-                              <span >
-                              {{  $employeeDetails[0]->education }}</span>
-                           </div>
-                        </div>
-                        <!--end::Item-->
-                     </div>
-                     <div class="col-xl-3">
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                           <div class="d-flex flex-column text-dark-75">
-                              <span class="font-weight-bolder font-size-sm">Education passsing year</span>
-                              <span>
-                              {{  $employeeDetails[0]->passingyear }}</span>
-                           </div>
-                        </div>
-                        <!--end::Item-->
-                     </div>
-                     <div class="col-xl-3">
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                           <div class="d-flex flex-column text-dark-75">
-                              <span class="font-weight-bolder font-size-sm">College/Institute Name</span>
-                              <span>
-                              {{ $employeeDetails[0]->institute }}
-                              </span>
-                           </div>
-                        </div>
-                        <!--end::Item-->
-                     </div>
-                     <div class="col-xl-3">
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                           <div class="d-flex flex-column flex-lg-fill">
-                              <span class="text-dark-75 font-weight-bolder font-size-sm">No of yeras experience</span>
-                              <span>
-                              {{  $employeeDetails[0]->experience }}
-                              </span>
-                           </div>
-                        </div>
-                        <!--end::Item-->
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!--begin::Items-->
+
             <!--begin::Items-->
             <div class="d-flex align-items-center flex-wrap mt-8">
                <div class="col-xl-12">
@@ -381,18 +328,7 @@
                         </div>
                         <!--end::Item-->
                      </div>
-                     <div class="col-xl-3">
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                           <div class="d-flex flex-column flex-lg-fill">
-                              <span class="text-dark-75 font-weight-bolder font-size-sm">Date of Joining</span>
-                              <span>
-                              {{  date("d F ,Y", strtotime($employeeDetails[0]->doj)) }}
-                              </span>
-                           </div>
-                        </div>
-                        <!--end::Item-->
-                     </div>
+
                   </div>
                </div>
             </div>
@@ -403,120 +339,12 @@
 
             <div class="mt-5">
                <h3 class="card-title align-items-start flex-column">
-                  <span class="card-label font-weight-bolder text-dark">Employee Bank Details</span>
+                  <span class="card-label font-weight-bolder text-dark">Employee Note</span>
                   <div class="separator separator-solid mt-3"></div>
                </h3>
             </div>
 
-            <!--begin::Items-->
-              <div class="d-flex align-items-center flex-wrap mt-8">
-                <div class="col-xl-12">
-                   <div class="row">
-                      <div class="col-xl-3">
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                            <div class="d-flex flex-column text-dark-75">
-                            <span class="font-weight-bolder font-size-sm">Aadhar Card Number</span>
-                            <span >
-                            {{  $employeeDetails[0]->aadharcard }}</span>
-                            </div>
-                        </div>
-                        <!--end::Item-->
-                      </div>
-                      <div class="col-xl-3">
-                         <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                            <div class="d-flex flex-column text-dark-75">
-                            <span class="font-weight-bolder font-size-sm">Pan Card Number</span>
-                            <span>
-                            {{  $employeeDetails[0]->pancard }}</span>
-                            </div>
-                        </div>
-                        <!--end::Item-->
-                      </div>
-                      <div class="col-xl-3">
-                         <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                            <div class="d-flex flex-column text-dark-75">
-                            <span class="font-weight-bolder font-size-sm">Bank Name</span>
-                            <span>
-                            {{ $employeeDetails[0]->bankname }}
-                            </span>
-                            </div>
-                        </div>
-                        <!--end::Item-->
-                      </div>
-                      <div class="col-xl-3">
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                            <div class="d-flex flex-column flex-lg-fill">
-                            <span class="text-dark-75 font-weight-bolder font-size-sm">Bank Branch name</span>
-                            <span>
-                            {{  $employeeDetails[0]->branchname  }}
-                            </span>
-                            </div>
-                        </div>
-                        <!--end::Item-->
-                      </div>
-                   </div>
-                </div>
-             </div>
-            <!--begin::Items-->
 
-            <!--begin::Items-->
-            <div class="d-flex align-items-center flex-wrap mt-8">
-                <div class="col-xl-12">
-                    <div class="row">
-                        <div class="col-xl-3">
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                            <div class="d-flex flex-column text-dark-75">
-                            <span class="font-weight-bolder font-size-sm">IFSC Code</span>
-                            <span >
-                            {{  $employeeDetails[0]->ifsccode }}</span>
-                            </div>
-                        </div>
-                        <!--end::Item-->
-                        </div>
-                        <div class="col-xl-3">
-                            <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                            <div class="d-flex flex-column text-dark-75">
-                            <span class="font-weight-bolder font-size-sm">Bank account number</span>
-                            <span>
-                            {{  $employeeDetails[0]->accountno }}</span>
-                            </div>
-                        </div>
-                        <!--end::Item-->
-                        </div>
-                        <div class="col-xl-3">
-                            <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                            <div class="d-flex flex-column text-dark-75">
-                            <span class="font-weight-bolder font-size-sm">P.F. No</span>
-                            <span>
-                            {{ $employeeDetails[0]->pfno }}
-                            </span>
-                            </div>
-                        </div>
-                        <!--end::Item-->
-                        </div>
-                        <div class="col-xl-3">
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
-                            <div class="d-flex flex-column flex-lg-fill">
-                            <span class="text-dark-75 font-weight-bolder font-size-sm">ESI No</span>
-                            <span>
-                            {{  $employeeDetails[0]->esino  }}
-                            </span>
-                            </div>
-                        </div>
-                        <!--end::Item-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--begin::Items-->
 
 
             <div class="d-flex align-items-center flex-wrap mt-3">

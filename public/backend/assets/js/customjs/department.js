@@ -9,7 +9,7 @@ var Department = function() {
             email: { required: true, email: true },
             line1: { required: true },
             line2: { required: true },
-       
+
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form, true);

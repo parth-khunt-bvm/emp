@@ -3,7 +3,7 @@
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
-    <div class="container">
+    <div class="container-fluid">
         <!--begin::Dashboard-->
         <!--begin::Row-->
         <div class="row">
@@ -23,7 +23,7 @@
                             <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="title" name="title"  value="{{ $details[0]->title }}"/>
                         </div>
-                 
+
                         <div class="form-group ">
                                 <label class="col-form-label ">Details
                                 <span class="text-danger">*</span></label>

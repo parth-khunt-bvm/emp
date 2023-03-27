@@ -27,12 +27,9 @@
 		<!--end::Global Theme Styles-->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-		@php
-    $logodetails = getdetails();
 
-@endphp
     <!--  FAVICON  -->
-    <link rel="shortcut icon" href="{{ asset('public/upload/details/'.$logodetails[0]->favicon) }}">
+
 
 		@if (!empty($css))
 		@foreach ($css as $value)

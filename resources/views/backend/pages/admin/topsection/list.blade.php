@@ -4,7 +4,7 @@
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
-    <div class="container">
+    <div class="container-fluid">
         <!--begin::Dashboard-->
         <!--begin::Row-->
         <div class="row">
@@ -54,7 +54,7 @@
                                 <br><br>
                             <input type="file" accept="image/*" class="form-control" id="image" name="image" />
                         </div>
-                      
+
 
                     </div>
 

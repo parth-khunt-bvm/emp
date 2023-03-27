@@ -15,7 +15,7 @@ class AddIsDeletedSalarySlipTable extends Migration
     {
         Schema::table('salary_slip', function (Blueprint $table) {
             //
-            $table->enum('is_deleted',['Yes','No'])->after('other')->default('No');
+            $table->enum('is_deleted',['Yes','No'])->after('ex_tax')->default('No');
         });
     }
 

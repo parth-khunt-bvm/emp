@@ -109,7 +109,6 @@ class EmployeeController extends Controller
         $data['pluginjs'] = array(
             'toastr/toastr.min.js',
             'plugins/validate/jquery.validate.min.js',
-            'pages/custom/wizard/wizard-3d1cf.js'
         );
 
         $data['js'] = array(
@@ -185,7 +184,6 @@ class EmployeeController extends Controller
 
         $obj = new Employee();
         $data['details']  = $obj->getDetail($id);
-
         $data['title'] = Config::get( 'constants.PROJECT_NAME' ) . ' || Add Employee';
         $data['description'] = Config::get( 'constants.PROJECT_NAME' ) . ' || Add Employee';
         $data['keywords'] = Config::get( 'constants.PROJECT_NAME' ) . ' || Add Employee';
@@ -209,14 +207,14 @@ class EmployeeController extends Controller
             'employeeList.js'
         );
         $data['funinit'] = array(
-            'EmployeeList.add()'
+            'EmployeeList.edit()'
         );
         $data['header'] = array(
-            'title' => 'Add Employee',
+            'title' => 'Edit Employee',
             'breadcrumb' => array(
                 'Dashboard'=> route('employee-dashboard'),
                 'Employee' => route('employee'),
-                'Add Employee'=> 'Add Employee',
+                'edit Employee'=> 'edit Employee',
             )
         );
         return view('backend.employee.pages.employee.edit', $data);

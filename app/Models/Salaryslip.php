@@ -99,21 +99,13 @@ class Salaryslip extends Model
             $ojSalaryslip->month = $request->input('month');
             $ojSalaryslip->year = $request->input('year');
             $ojSalaryslip->wd = $request->input('wd');
-            $ojSalaryslip->wo = $request->input('wo');
-            $ojSalaryslip->ph = $request->input('ph');
-            $ojSalaryslip->pd = $request->input('pd');
-            $ojSalaryslip->lwp = $request->input('lwp');
             $ojSalaryslip->basic = $request->input('basic');
+            $ojSalaryslip->hra = $request->input('hra_pr');
             $ojSalaryslip->hra = $request->input('hra');
-            $ojSalaryslip->leave_encash = $request->input('leave_encash');
-            $ojSalaryslip->produc = $request->input('produc');
-            $ojSalaryslip->convei = $request->input('convei');
-            $ojSalaryslip->transport = $request->input('transport');
-            $ojSalaryslip->pf = $request->input('pf');
-            $ojSalaryslip->esi = $request->input('esi');
             $ojSalaryslip->pt = $request->input('pt');
-            $ojSalaryslip->tds = $request->input('tds');
-            $ojSalaryslip->other = $request->input('other');
+            $ojSalaryslip->pt = $request->input('pt_pr');
+            $ojSalaryslip->pt = $request->input('ext_tax');
+            $ojSalaryslip->pt = $request->input('ext_tax_pr');
             $ojSalaryslip->updated_at = date("Y-m-d h:i:s");
             $ojSalaryslip->updated_at = date("Y-m-d h:i:s");
             if($ojSalaryslip->save()){

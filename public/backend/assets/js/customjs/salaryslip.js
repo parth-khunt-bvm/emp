@@ -88,24 +88,16 @@ var Salaryslip = function(){
             empDepartment:  { required: true, number: true },
             empDesignation:  { required: true, number: true },
             employee:  { required: true, number: true },
-            month:  { required: true, number: true },
-            year:  { required: true, number: true },
+            month:  { required: true},
+            year:  { required: true},
             wd:  { required: true, number: true },
-            wo:  { required: true, number: true },
-            ph:  { required: true, number: true },
-            pd:  { required: true, number: true },
-            lwp:  { required: true, number: true },
-            basic:  { required: true, number: true },
+            ext_tax_pr:  { required: true, number: true },
+            ext_tax:  { required: true, number: true },
+            hra_pr:  { required: true, number: true },
             hra:  { required: true, number: true },
-            leave_encash:  { required: true, number: true },
-            produc:  { required: true, number: true },
-            convei:  { required: true, number: true },
-            transport:  { required: true, number: true },
-            pf:  { required: true, number: true },
-            esi:  { required: true, number: true },
-            pt:  { required: true, number: true },
-            tds:  { required: true, number: true },
-            other:  { required: true, number: true },
+            pro_tax_pr:  { required: true, number: true },
+            pro_tax:  { required: true, number: true },
+
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form, true);
@@ -155,6 +147,7 @@ var Salaryslip = function(){
                 success: function(data) {
                     var output = JSON.parse(data);
                     $("#basic").val(output[0].salary);
+                    salaryCount();
                 }
             });
         });
@@ -192,6 +185,69 @@ var Salaryslip = function(){
             $("#wd").val(getDaysInMonth(month, year));
         });
 
+        function salaryCount(){
+            var salary = $("#basic").val();
+            var ext_tax_pr = $("#ext_tax_pr").val();
+            var hra_pr = $("#hra_pr").val();
+            var pro_tax_pr = $("#pro_tax_pr").val();
+            var ext_tax = countAmountFromPercentage(salary, ext_tax_pr);
+            var hra = countAmountFromPercentage(salary, hra_pr);
+            var pro_tax = countAmountFromPercentage(salary, pro_tax_pr);
+
+            $("#ext_tax").val(ext_tax.toFixed(2));
+            $("#hra").val(hra.toFixed(2));
+            $("#pro_tax").val(pro_tax.toFixed(2));
+        }
+
+        $("body").on("keyup","#ext_tax_pr",function(){
+            var salary = $("#basic").val();
+            var ext_tax_pr = $(this).val();
+            $("#ext_tax").val(countAmountFromPercentage(salary, ext_tax_pr).toFixed(2));
+        });
+
+        $("body").on("keyup","#ext_tax",function(){
+            var salary = $("#basic").val();
+            var ext_tax = $(this).val();
+            $("#ext_tax_pr").val(countPercentageFromAmount(ext_tax, salary).toFixed(2));
+        });
+
+        $("body").on("keyup","#hra_pr",function(){
+            var salary = $("#basic").val();
+            var hra_pr = $(this).val();
+            $("#hra").val(countAmountFromPercentage(salary, hra_pr).toFixed(2));
+        });
+
+        $("body").on("keyup","#hra",function(){
+            var salary = $("#basic").val();
+            var hra = $(this).val();
+            $("#hra_pr").val(countPercentageFromAmount(hra, salary).toFixed(2));
+        });
+
+        $("body").on("keyup","#pro_tax_pr",function(){
+            var salary = $("#basic").val();
+            var pro_tax_pr = $(this).val();
+            $("#pro_tax").val(countAmountFromPercentage(salary, pro_tax_pr).toFixed(2));
+        });
+
+        $("body").on("keyup","#pro_tax",function(){
+            var salary = $("#basic").val();
+            var pro_tax = $(this).val();
+            $("#pro_tax_pr").val(countPercentageFromAmount(pro_tax, salary).toFixed(2));
+        });
+
+        function countAmountFromPercentage(totalAmount, percentage){
+            if(totalAmount == 0 || percentage == 0 || totalAmount == null || percentage == null || totalAmount == '' || percentage == '' ){
+                return 0;
+            }
+            return (parseFloat(totalAmount) * parseFloat(percentage))/100;
+        }
+
+        function countPercentageFromAmount(amount, totalAmount){
+            if(amount == 0 || totalAmount == 0 || amount == null || totalAmount == null || amount == '' || totalAmount == '' ){
+                return 0;
+            }
+            return (parseFloat(amount) * 100) / parseFloat(totalAmount);
+        }
     }
 
     var editSalary = function(){
@@ -201,24 +257,15 @@ var Salaryslip = function(){
             empDepartment:  { required: true, number: true },
             empDesignation:  { required: true, number: true },
             employee:  { required: true, number: true },
-            month:  { required: true, number: true },
-            year:  { required: true, number: true },
+            month:  { required: true},
+            year:  { required: true},
             wd:  { required: true, number: true },
-            wo:  { required: true, number: true },
-            ph:  { required: true, number: true },
-            pd:  { required: true, number: true },
-            lwp:  { required: true, number: true },
-            basic:  { required: true, number: true },
+            ext_tax_pr:  { required: true, number: true },
+            ext_tax:  { required: true, number: true },
+            hra_pr:  { required: true, number: true },
             hra:  { required: true, number: true },
-            leave_encash:  { required: true, number: true },
-            produc:  { required: true, number: true },
-            convei:  { required: true, number: true },
-            transport:  { required: true, number: true },
-            pf:  { required: true, number: true },
-            esi:  { required: true, number: true },
-            pt:  { required: true, number: true },
-            tds:  { required: true, number: true },
-            other:  { required: true, number: true },
+            pro_tax_pr:  { required: true, number: true },
+            pro_tax:  { required: true, number: true },
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form, true);

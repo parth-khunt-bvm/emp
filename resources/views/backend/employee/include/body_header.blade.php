@@ -2,7 +2,7 @@
 if (!empty(Auth()->guard('employee')->user())) {
    $data = Auth()->guard('employee')->user();
 }
-$logodetails = getdetails();
+
 @endphp
 <!--begin::Header-->
 

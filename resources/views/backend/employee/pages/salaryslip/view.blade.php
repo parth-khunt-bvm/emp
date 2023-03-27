@@ -49,7 +49,7 @@ function AmountInWords(float $amount)
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
    <!--begin::Container-->
-   <div class="container">
+   <div class="container-fluid">
       <div class="card card-custom" style="padding: 25px 25px">
          <table cellpadding="0" cellspacing="0" style="border-collapse: unset !important;padding:0px;margin:0px;border:0px;border-spacing:0px;font-family:Arial,Verdana,Geneva,sans-serif;letter-spacing:normal;text-indent:0px;text-transform:none;word-spacing:0px;text-decoration:none;width:100%">
             <tbody>

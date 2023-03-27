@@ -14,22 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            AdminSeeder::class,
-            BannerSectionSeeder::class,
-            BannerSeeder::class,
-            CareerDepartment::class,
-            ContactusDetailsSeeder::class,
-            DetailsSeeder::class,
             EmployeeNoSeeder::class,
-            DetailsSeeder::class,
             EmployeeSeeder::class,
-            HomeSilder::class,
-            MenuSeeder::class,
-            Section2Seeder::class,
-            SectiononeSeeder::class,
-            SectiontwoSeeder::class,
-            StatisticalSeeder::class,
-            TopSectionSeeder::class,
         ]);
     }
 }
