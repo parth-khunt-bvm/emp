@@ -79,8 +79,8 @@
                     <tr>
                         <td align="left" style="width: 100%!important;">
                             <table>
-                                <tr style="margin-bottom: 20px;">
-                                    <td>EMPLOYEE SUMMARY</td>
+                                <tr>
+                                    <td style="margin-bottom: 50px;">EMPLOYEE SUMMARY</td>
                                 </tr>
 
                                 <tr>
@@ -105,27 +105,25 @@
                             </table>
                         </td>
                         <td align="right" style="text-align: right; width: 100%!important;">
-                            <table style="float: right;
-                                   width: 300px;
-                                   border: 1px black;
-                                   padding: 10px;
-                                   border-radius: 5px;
-                                   margin: 10px;">
-                                <tr style="background-color: #edfcf1; width: 100%!important">
-                                    <td colspan="2">
+                            <table style="float:right; border: 1 solid gray; border-radius: 5px; " >
+                                <tr style="background-color: #edfcf1; text-align: center;">
+                                    <td colspan="2" style=" border-bottom: black">
                                         <h3>59,800.00</h3>
+                                        <p>Employee Net Pay</p>
                                     </td>
                                 </tr>
-
-
-                                <tr>
-                                    <td>Sub Total</td>
-                                    <td class="text-end">$699.96</td>
+                              <tr>
+                                  <td colspan="2" style="border-bottom:1px solid; border-bottom-style: dotted ">
+                                  </td>
+                              </tr>
+                                <tr style="">
+                                    <td>Paid Days :</td>
+                                    <td class="text-end">30</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Estimated Tax (12.5%)</td>
-                                    <td class="text-end">$44.99</td>
+                                    <td>LOP Days :</td>
+                                    <td class="text-end">00</td>
                                 </tr>
                             </table>
                         </td>
@@ -137,6 +135,82 @@
             </div>
         </div>
     </div>
+
+<div style="margin-bottom: 50px;"></div>
+
+    <div class="float-start">
+        <div class="d-flex flex-column">
+            <div class="mt-2">
+                <table style=" width: 100%; border: 1px solid; padding: 12px; margin: 10px; border-radius: 10px;">
+                    <tr>
+                        <td>
+                            <table >
+                                <tr>
+                                    <td>EARNINGS </td>
+                                    <td>AMOUNT</td>
+                                </tr>
+
+                                <tr><td colspan="2" style="border-bottom:1px solid; border-bottom-style: dotted "></td></tr>
+
+                                <tr>
+                                    <td>Employee Name </td>
+                                    <td>:  Ritika Nikhara</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Employee Name </td>
+                                    <td>:  Ritika Nikhara</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Employee Name </td>
+                                    <td>:  Ritika Nikhara</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Employee Name </td>
+                                    <td>:  Ritika Nikhara</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td style="margin-bottom: 50px;">EMPLOYEE SUMMARY</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Employee Name </td>
+                                    <td>:  Ritika Nikhara</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Employee Name </td>
+                                    <td>:  Ritika Nikhara</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Employee Name </td>
+                                    <td>:  Ritika Nikhara</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Employee Name </td>
+                                    <td>:  Ritika Nikhara</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+                </table>
+                <!--end table-->
+            </div>
+        </div>
+    </div>
+
+
+
 
 
 </div>
