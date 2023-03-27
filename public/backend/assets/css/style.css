@@ -1,0 +1,43 @@
+            .help-block {
+                color: red;
+            }
+
+            .my-color {
+                background-color: #FFA800 !important;
+                border-color: #FFA800 !important;
+            }
+
+            #loader {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.25) url(../images/loader.gif) no-repeat center center;
+                background-size: 180px 180px;
+                z-index: 10000;
+            }
+
+            .aside-menu .menu-nav>.menu-item .menu-submenu .menu-item>.menu-heading .menu-text,
+            .aside-menu .menu-nav>.menu-item .menu-submenu .menu-item>.menu-link .menu-text {
+                color: #fff !important;
+            }
+
+            .aside-menu .menu-nav>.menu-item .menu-submenu .menu-item>.menu-heading .menu-bullet.menu-bullet-dot>span,
+            .aside-menu .menu-nav>.menu-item .menu-submenu .menu-item>.menu-link .menu-bullet.menu-bullet-dot>span {
+                background-color: #fff !important;
+            }
+
+            .aside-menu .menu-nav>.menu-item .menu-submenu .menu-item.menu-item-active>.menu-heading,
+            .aside-menu .menu-nav>.menu-item .menu-submenu .menu-item.menu-item-active>.menu-link {
+                background-color: #3699FF !important;
+            }
+
+            .bg-blue{
+                background-color: #01b3e4;
+                padding: 5px !important;
+            }
+
+
