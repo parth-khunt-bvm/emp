@@ -35,6 +35,7 @@
         body {
             margin: 0px;
         }
+
     </style>
 </head>
 
@@ -80,32 +81,50 @@
                         <td align="left" style="width: 100%!important;">
                             <table>
                                 <tr>
-                                    <td style="margin-bottom: 50px;">EMPLOYEE SUMMARY</td>
+                                    <td style="margin-bottom: 50px; font-size: 14px!important; font-style: bold">EMPLOYEE SUMMARY</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Employee Name </td>
-                                    <td>:  Ritika Nikhara</td>
+                                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">Employee Name </td>
+                                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; font-style: bold">:  Ritika Nikhara</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Employee Name </td>
-                                    <td>:  Ritika Nikhara</td>
+                                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">Employee ID </td>
+                                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; font-style: bold">:  Ritika Nikhara</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Employee Name </td>
-                                    <td>:  Ritika Nikhara</td>
+                                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">Pay Period</td>
+                                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; font-style: bold">:  Ritika Nikhara</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Employee Name </td>
-                                    <td>:  Ritika Nikhara</td>
+                                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">Pay Date </td>
+                                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; font-style: bold">:  Ritika Nikhara</td>
                                 </tr>
+
                             </table>
                         </td>
-                        <td align="right" style="text-align: right; width: 100%!important;">
-                            <table style="float:right; border: 1 solid gray; border-radius: 5px; " >
+                        <td align="right" style="text-align: right; width: 100%!important; ">
+                            <table  style="width: 100% !important; border: 1px solid #c4cbd4; border-radius: 10px !important">
+                                <tr style="background-color: #edfcf1; text-align: left;">
+                                    <td colspan="2" style=" border-bottom: black;  padding-left: 25px!important; padding-bottom: 25px!important;  padding-top: 25px!important; ">
+                                        <p><span style="font-size: 20px!important; color:black">59,800.00</span><br>
+                                        Employee Net Pay</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 25px!important; padding-top: 10px!important;font-size: 14px!important; color:gray">Paid Days</td>
+                                    <td style="padding-left: 25px!important; padding-top: 10px!important;font-size: 14px!important; color:black">: 30</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="padding-left: 25px!important; padding-bottom: 10px!important; padding-top: 5px!important; font-size: 14px!important; color:gray">LOP Days</td>
+                                    <td style="padding-left: 25px!important; padding-bottom: 10px!important; padding-top: 5px!important; font-size: 14px!important; color:black">: 00</td>
+                                </tr>
+                            </table>
+                            {{-- <table style="float:right; border: 1 solid gray; border-radius: 5px; " >
                                 <tr style="background-color: #edfcf1; text-align: center;">
                                     <td colspan="2" style=" border-bottom: black">
                                         <h3>59,800.00</h3>
@@ -125,7 +144,7 @@
                                     <td>LOP Days :</td>
                                     <td class="text-end">00</td>
                                 </tr>
-                            </table>
+                            </table> --}}
                         </td>
                     </tr>
                 </table>
