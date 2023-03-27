@@ -9,8 +9,8 @@ function ccd($value){
     die();
 }
 
-function numberformat($value){
-    return number_format((float)$value, 2, '.', '');
+function numberformat($value, $comma =  null){
+    return number_format((float)$value, 2, '.', $comma ? $comma : '');
 }
 
 function date_formate($date){

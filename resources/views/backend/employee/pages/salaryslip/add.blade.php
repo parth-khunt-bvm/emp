@@ -1,8 +1,8 @@
 @extends('backend.employee.layout.layout')
 @section('section')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">  
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>  
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
@@ -28,7 +28,7 @@
 
                         <div class="col-12">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label class="" for="exampleSelect1">Department <span class="text-danger">*</span></label>
                                         <select class="form-control"  id="empDepartment" name="empDepartment">
@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Designation<span class="text-danger">*</span></label>
                                         <select class="form-control" name="empDesignation" id="empDesignation">
@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Employee<span class="text-danger">*</span></label>
                                         <select class="form-control" name="employee" id="employee">
@@ -58,22 +58,12 @@
                                     </div>
                                 </div>
 
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="" for="exampleSelect1">BASIC SALARY <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="basic" value="0" name="basic">
-                                    </div>
-                                </div>
 
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="" for="exampleSelect1">WORKING DAY <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="wd" value="0" name="wd">
-                                    </div>
-                                </div>
 
                             </div>
                         </div>
+
+
 
                         <div class="col-12">
                             <div class="row">
@@ -119,29 +109,35 @@
                                     </div>
                                 </div>
 
-                                
+
                             </div>
                         </div>
-
 
                         <div class="col-12">
-                            <h3 class="card-title" >Estimated Tax</h3>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <label>Estimated Tax(%) <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="ext_tax_pr" value="0" name="ext_tax_pr">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label>Estimated Tax(Amount) <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="ext_tax" value="0" name="ext_tax">
+                                        <label class="" for="exampleSelect1">BASIC SALARY <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="basic" value="0" name="basic">
                                     </div>
                                 </div>
 
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="" for="exampleSelect1">WORKING DAY <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="wd" value="0" name="wd">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="" for="exampleSelect1">Loss Of Pay(LOP) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="lop" value="0" name="lop">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
 
                         <div class="col-12">
                             <h3 class="card-title" >HOUSE RENT ALLOWANCE</h3>
@@ -162,6 +158,44 @@
                             </div>
                         </div>
 
+
+                        <div class="col-12">
+                            <h3 class="card-title" >Income Tax</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Income Tax(%) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="income_tax_pr" value="0" name="income_tax_pr">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Income Tax(Amount) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="income_tax" value="0" name="income_tax">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <h3 class="card-title" >Provident Fund </h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Provident Fund (%) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="pf_pr" value="0" name="pf_pr">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Provident Fund (Amount) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="pf" value="0" name="pf">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
 
                         <div class="col-12">
                             <h3 class="card-title" >PROFESSIONAL Tax</h3>
@@ -202,10 +236,10 @@
 </div>
 <!--end::Entry-->
 
-<script type="text/javascript">  
-    $('.date').datepicker({    
-       format: dd-mm-yyyy'  
-     });    
-</script> 
+<script type="text/javascript">
+    $('.date').datepicker({
+       format: dd-mm-yyyy'
+     });
+</script>
 
 @endsection

@@ -2,12 +2,12 @@
 @section('section')
 @php
 $month= ["","January","February","March","April","May","June","July","August","September","October","November","December"];
-$days = $salaryslipDetails[0]->wd + $salaryslipDetails[0]->wo + $salaryslipDetails[0]->ph + $salaryslipDetails[0]->pd + $salaryslipDetails[0]->lwp ;
-$grossIncome = $salaryslipDetails[0]->basic + $salaryslipDetails[0]->hra + $salaryslipDetails[0]->leave_encash + $salaryslipDetails[0]->produc + $salaryslipDetails[0]->convei + $salaryslipDetails[0]->transport;
-$totalDeduction = $salaryslipDetails[0]->pf + $salaryslipDetails[0]->esi + $salaryslipDetails[0]->pt + $salaryslipDetails[0]->tds + $salaryslipDetails[0]->other ;
-$total = $salaryslipDetails[0]->basic + $salaryslipDetails[0]->hra - $salaryslipDetails[0]->pt;
+
+$grossEarnings =  numberformat($salaryslipDetails[0]->basic) + numberformat($salaryslipDetails[0]->hra) ;
+$totalDeductions =  numberformat($salaryslipDetails[0]->income_tax) + numberformat($salaryslipDetails[0]->pf) + numberformat($salaryslipDetails[0]->pt) ;
+$totalNetPayble = numberformat($grossEarnings) - numberformat($totalDeductions) ;
 function AmountInWords(float $amount)
- 
+
 {
    $amount_after_decimal = round($amount - ($num = floor($amount)), 2) * 100;
    // Check if there is any number after decimal
@@ -97,27 +97,27 @@ function AmountInWords(float $amount)
    </div>
 
    <div class="float-end">
-       <div class="border rounded-4 overflow-hidden">
+       <div class="border rounded-4 overflow-hidden" style="width: 250px">
            <div class="p-4" style="background-color: #edfcf1">
-               <h3>₹{{ numberformat($total) }}</h3>
+               <h3>₹{{ numberformat($totalNetPayble, ',') }}<h6>Employee Net Pay</h6></h3>
            </div>
            <div class="px-4 py-2">
                <table class="table table-borderless table-nowrap align-middle mb-0">
                    <tbody>
                    <tr>
-                       <td>Sub Total</td>
-                       <td class="text-end">₹{{ numberformat(123) }}</td>
+                       <td>Paid Days</td>
+                       <td class="text-start">: {{ $salaryslipDetails[0]->wd }}</td>
                    </tr>
                    <tr>
-                       <td>Estimated Tax ({{ numberformat($salaryslipDetails[0]->ex_tax_pr)}}%)</td>
-                       <td class="text-end">{{ numberformat($salaryslipDetails[0]->ex_tax)}}</td>
+                       <td>LOP Days</td>
+                       <td class="text-start">: {{ $salaryslipDetails[0]->lop }}</td>
                    </tr>
                    </tbody>
                </table>
            </div>
        </div>
    </div>
-   
+
 
    <div class="float-start">
        <div class="d-flex flex-column">
@@ -155,7 +155,7 @@ function AmountInWords(float $amount)
                    </tr>
                    </tbody>
                </table>
-            
+
                <!--end table-->
            </div>
        </div>
@@ -169,8 +169,8 @@ function AmountInWords(float $amount)
                    <table class="table table-borderless table-nowrap align-middle mb-0">
                        <tbody>
                        <thead class="border-bottom border-dashed">
-                       <th>Earnings</th>
-                       <th class="text-end">Amount</th>
+                       <th>EARNINGS</th>
+                       <th class="text-end">AMOUNT</th>
                        </thead>
                        <tr>
                            <td>Basic</td>
@@ -192,7 +192,7 @@ function AmountInWords(float $amount)
                        <tfoot>
                        <tr>
                            <th>Gross Earnings</th>
-                           <th class="text-end">₹{{ numberformat($salaryslipDetails[0]->basic + $salaryslipDetails[0]->hra) }}</th>
+                           <th class="text-end">₹{{ numberformat($grossEarnings, ',') }}</th>
                        </tr>
                        </tfoot>
                    </table>
@@ -204,16 +204,16 @@ function AmountInWords(float $amount)
                    <table class="table table-borderless table-nowrap align-middle mb-0">
                        <tbody>
                        <thead class="border-bottom border-dashed">
-                       <th>Earnings</th>
-                       <th class="text-end">Amount</th>
+                       <th>DEDUCTIONS</th>
+                       <th class="text-end">AMOUNT</th>
                        </thead>
                        <tr>
-                           <td>Basic</td>
-                           <th class="text-end">₹{{ $salaryslipDetails[0]->basic}}</th>
+                           <td>Income Tax</td>
+                           <th class="text-end">₹{{ $salaryslipDetails[0]->income_tax}}</th>
                        </tr>
                        <tr>
-                           <td>House Rent Allowance</td>
-                           <th class="text-end">₹{{ $salaryslipDetails[0]->hra}}</th>
+                           <td>Provident Fund</td>
+                           <th class="text-end">₹{{ $salaryslipDetails[0]->pf}}</th>
                        </tr>
                        <tr>
                            <td>Professional Tax</td>
@@ -226,8 +226,8 @@ function AmountInWords(float $amount)
                    <table class="table table-borderless table-nowrap align-middle mb-0">
                        <tfoot>
                        <tr>
-                           <th>Gross Earnings</th>
-                           <th class="text-end">₹{{ numberformat($total) }}</th>
+                           <th>Total Deductions</th>
+                           <th class="text-end">₹{{ numberformat($totalDeductions, ',') }}</th>
                        </tr>
                        </tfoot>
                    </table>
@@ -242,13 +242,13 @@ function AmountInWords(float $amount)
            <p class="text-muted mb-0">Gross Earnings - Total Deductions</p>
        </div>
        <div style="background-color: #edfcf1">
-           <h6 class="d-flex align-items-center h-100 mb-0 px-4">₹{{ numberformat($total) }}</h6>
+           <h6 class="d-flex align-items-center h-100 mb-0 px-4">₹{{ numberformat($totalNetPayble, ',') }}</h6>
        </div>
    </div>
 
    <h6 class="text-end mb-4">
        <span class="text-muted">Amount In Words</span>
-       : {{ AmountInWords(numberformat($total)) }}
+       : {{ AmountInWords(numberformat($totalNetPayble)) }}
    </h6>
    <hr class="mb-4 ">
    <p class="text-center">

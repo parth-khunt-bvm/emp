@@ -99,13 +99,16 @@ class Salaryslip extends Model
             $ojSalaryslip->month = $request->input('month');
             $ojSalaryslip->year = $request->input('year');
             $ojSalaryslip->wd = $request->input('wd');
+            $ojSalaryslip->lop = $request->input('lop');
             $ojSalaryslip->basic = $request->input('basic');
-            $ojSalaryslip->hra = $request->input('hra_pr');
+            $ojSalaryslip->hra_pr = $request->input('hra_pr');
             $ojSalaryslip->hra = $request->input('hra');
-            $ojSalaryslip->pt = $request->input('pt');
-            $ojSalaryslip->pt = $request->input('pt_pr');
-            $ojSalaryslip->pt = $request->input('ext_tax');
-            $ojSalaryslip->pt = $request->input('ext_tax_pr');
+            $ojSalaryslip->pt_pr = $request->input('pro_tax_pr');
+            $ojSalaryslip->pt = $request->input('pro_tax');
+            $ojSalaryslip->income_tax_pr = $request->input('income_tax_pr');
+            $ojSalaryslip->income_tax = $request->input('income_tax');
+            $ojSalaryslip->pf_pr = $request->input('pf_pr');
+            $ojSalaryslip->pf = $request->input('pf');
             $ojSalaryslip->pay_date = date("Y-m-d", strtotime($request->input('pay_salary')));
             $ojSalaryslip->created_at = date("Y-m-d h:i:s");
             $ojSalaryslip->updated_at = date("Y-m-d h:i:s");
@@ -164,9 +167,7 @@ class Salaryslip extends Model
                             ->join("employee_department","employee_department.id","=","salary_slip.empDepartment")
                             ->join("employee_designation","employee_designation.id","=","salary_slip.empDesignation")
                             ->where("salary_slip.id",$id)
-                            ->select("employee_department.department","employee_designation.designation","myemployee.firstname","myemployee.lastname","myemployee.emp_no","salary_slip.hra","salary_slip.pt","salary_slip.ex_tax",
-                                "myemployee.email",
-                                    "salary_slip.empDepartment","salary_slip.id","salary_slip.empDesignation","salary_slip.employee","salary_slip.month","salary_slip.year","salary_slip.wd","salary_slip.basic","salary_slip.hra","salary_slip.pay_date","salary_slip.pt")
+                            ->select("employee_department.department", "employee_designation.designation", "myemployee.firstname", "myemployee.lastname", "myemployee.emp_no", "salary_slip.hra", "salary_slip.pt", "salary_slip.income_tax_pr", "salary_slip.lop", "salary_slip.income_tax", "salary_slip.pf_pr", "salary_slip.pf", "myemployee.email", "salary_slip.empDepartment", "salary_slip.id", "salary_slip.empDesignation", "salary_slip.employee", "salary_slip.month", "salary_slip.year", "salary_slip.wd", "salary_slip.basic", "salary_slip.hra", "salary_slip.pay_date", "salary_slip.pt")
                             ->get();
     }
 

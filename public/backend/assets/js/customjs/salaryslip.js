@@ -199,17 +199,7 @@ var Salaryslip = function(){
             $("#pro_tax").val(pro_tax.toFixed(2));
         }
 
-        $("body").on("keyup","#ext_tax_pr",function(){
-            var salary = $("#basic").val();
-            var ext_tax_pr = $(this).val();
-            $("#ext_tax").val(countAmountFromPercentage(salary, ext_tax_pr).toFixed(2));
-        });
 
-        $("body").on("keyup","#ext_tax",function(){
-            var salary = $("#basic").val();
-            var ext_tax = $(this).val();
-            $("#ext_tax_pr").val(countPercentageFromAmount(ext_tax, salary).toFixed(2));
-        });
 
         $("body").on("keyup","#hra_pr",function(){
             var salary = $("#basic").val();
@@ -222,6 +212,31 @@ var Salaryslip = function(){
             var hra = $(this).val();
             $("#hra_pr").val(countPercentageFromAmount(hra, salary).toFixed(2));
         });
+
+        $("body").on("keyup","#income_tax_pr",function(){
+            var salary = $("#basic").val();
+            var income_tax_pr = $(this).val();
+            $("#income_tax").val(countAmountFromPercentage(salary, income_tax_pr).toFixed(2));
+        });
+
+        $("body").on("keyup","#income_tax",function(){
+            var salary = $("#basic").val();
+            var income_tax = $(this).val();
+            $("#income_tax_pr").val(countPercentageFromAmount(income_tax, salary).toFixed(2));
+        });
+
+        $("body").on("keyup","#pf_pr",function(){
+            var salary = $("#basic").val();
+            var pf_pr = $(this).val();
+            $("#pf").val(countAmountFromPercentage(salary, pf_pr).toFixed(2));
+        });
+
+        $("body").on("keyup","#pf",function(){
+            var salary = $("#basic").val();
+            var pf = $(this).val();
+            $("#pf_pr").val(countPercentageFromAmount(pf, salary).toFixed(2));
+        });
+
 
         $("body").on("keyup","#pro_tax_pr",function(){
             var salary = $("#basic").val();
