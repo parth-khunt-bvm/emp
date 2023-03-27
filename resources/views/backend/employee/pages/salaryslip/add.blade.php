@@ -1,6 +1,8 @@
 @extends('backend.employee.layout.layout')
 @section('section')
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>  
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
@@ -26,7 +28,7 @@
 
                         <div class="col-12">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label class="" for="exampleSelect1">Department <span class="text-danger">*</span></label>
                                         <select class="form-control"  id="empDepartment" name="empDepartment">
@@ -38,7 +40,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label>Designation<span class="text-danger">*</span></label>
                                         <select class="form-control" name="empDesignation" id="empDesignation">
@@ -47,12 +49,26 @@
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label>Employee<span class="text-danger">*</span></label>
                                         <select class="form-control" name="employee" id="employee">
                                             <option  value="">Select Employee </option>
                                         </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="" for="exampleSelect1">BASIC SALARY <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="basic" value="0" name="basic">
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="" for="exampleSelect1">WORKING DAY <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="wd" value="0" name="wd">
                                     </div>
                                 </div>
 
@@ -96,19 +112,14 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <label class="" for="exampleSelect1">BASIC SALARY <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="basic" value="0" name="basic">
+                                        <label>Pay Salary Date</label>
+                                        <input type="date" class="form-control" name="pay_salary" placeholder="Please enter your Pay Salary date"  />
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label class="" for="exampleSelect1">WORKING DAY <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="wd" value="0" name="wd">
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -191,5 +202,10 @@
 </div>
 <!--end::Entry-->
 
+<script type="text/javascript">  
+    $('.date').datepicker({    
+       format: dd-mm-yyyy'  
+     });    
+</script> 
 
 @endsection
