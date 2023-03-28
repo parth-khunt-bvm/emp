@@ -17,8 +17,8 @@ class EmployeeSeeder extends Seeder
         DB::table('users')->insert([
             'firstname' => "Employee",
             'lastname' => "Panel",
-            'email' => "employee@admin.com",
-            'password' => Hash::make('Maxthon_emp@123'),
+            'email' => "bvminfotech@admin.com",
+            'password' => Hash::make('Bvminfotech@123'),
             'userimage' => 'default.jpg',
             'usertype' => 'U',
             'is_deleted' => "N",

@@ -82,7 +82,7 @@
         <td>
             <p style="font-family: 'Times New Roman', serif !important; font-size: 20px !important; margin-bottom: -10px;">
                 BVM Infotech</p>
-            <p style="font-size: 14px!important; color:gray!important;">
+            <p style="font-size: 14px!important; color:#5A5A5A">
                 1049-1051, Silver Business Point,near Uttran Surat - 394105 India
             </p>
         </td>
@@ -109,15 +109,15 @@
                 </tr>
 
                 <tr>
-                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">
+                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:#5A5A5A">
                         Employee Name
                     </td>
                     <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important;">
-                        :  {{ $salaryslipDetails[0]->firstname." ".$salaryslipDetails[0]->lastname }}</td>
+                        : {{ $salaryslipDetails[0]->firstname." ".$salaryslipDetails[0]->lastname }}</td>
                 </tr>
 
                 <tr>
-                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">
+                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:#5A5A5A">
                         Employee ID
                     </td>
                     <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important;">
@@ -125,7 +125,7 @@
                 </tr>
 
                 <tr>
-                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">
+                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:#5A5A5A">
                         Pay Period
                     </td>
                     <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important;">
@@ -134,7 +134,7 @@
                 </tr>
 
                 <tr>
-                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">
+                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:#5A5A5A">
                         Pay Date
                     </td>
                     <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important;">
@@ -147,7 +147,7 @@
             <table
                 style="width: 80% !important;  margin: 0px 140px; margin-left: 50px; border: 1px solid #c4cbd4; border-radius: 10px !important">
                 <tr style="background-color: #edfcf1; text-align: left;">
-                    <td colspan="2" >
+                    <td colspan="2">
                         <p style="font-size: 20px!important; color:black;
                                 padding: 2px;
                                 margin: 15px 0 15px 15px;
@@ -156,7 +156,8 @@
                                 /*position: relative;*/
                                 border-left: 3px solid #17dc3f;
                                 padding-left: 15px;">
-                            <span style="font-size: large; font-weight: bold"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($totalNetPayble, ',') }}</span><br>
+                            <span style="font-size: large; font-weight: bold"><span
+                                    style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($totalNetPayble, ',') }}</span><br>
                             Employee Net Pay</p>
                     </td>
                 </tr>
@@ -165,7 +166,7 @@
                     </td>
                 </tr>
                 <tr style="">
-                    <td style="padding-left: 25px!important; padding-top: 5px!important;font-size: 14px!important; color:gray">
+                    <td style="padding-left: 25px!important; padding-top: 5px!important;font-size: 14px!important; color:#5A5A5A">
                         Paid Days
                     </td>
                     <td style="padding-left: 25px!important; padding-top: 5px!important;font-size: 14px!important; color:black">
@@ -173,7 +174,7 @@
                 </tr>
 
                 <tr>
-                    <td style="padding-left: 25px!important; padding-bottom: 5px!important; padding-top: 5px!important; font-size: 14px!important; color:gray">
+                    <td style="padding-left: 25px!important; padding-bottom: 5px!important; padding-top: 5px!important; font-size: 14px!important; color:#5A5A5A">
                         LOP Days
                     </td>
                     <td style="padding-left: 25px!important; padding-bottom: 5px!important; padding-top: 5px!important; font-size: 14px!important; color:black">
@@ -190,8 +191,12 @@
         <td style="text-align: left !important">
             <table style="width: 95% !important;">
                 <tr>
-                    <td style="text-align: left !important; padding: 5px!important; font-weight: bold; font-size: 12px; ">EARNINGS</td>
-                    <td style="text-align: right !important; padding: 5px!important; font-weight: bold; font-size: 12px;">AMOUNT</td>
+                    <td style="text-align: left !important; padding: 5px!important; font-weight: bold; font-size: 12px; ">
+                        EARNINGS
+                    </td>
+                    <td style="text-align: right !important; padding: 5px!important; font-weight: bold; font-size: 12px;">
+                        AMOUNT
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2" style="border-bottom:1px solid; border-bottom-style: dotted "></td>
@@ -201,8 +206,12 @@
         <td>
             <table style="width: 100% !important;">
                 <tr>
-                    <td style="text-align: left !important; font-weight: bold; padding: 5px!important; font-size: 12px;">DEDUCTIONS</td>
-                    <td style="text-align: right !important; font-weight: bold; padding: 5px!important; font-size: 12px;">AMOUNT</td>
+                    <td style="text-align: left !important; font-weight: bold; padding: 5px!important; font-size: 12px;">
+                        DEDUCTIONS
+                    </td>
+                    <td style="text-align: right !important; font-weight: bold; padding: 5px!important; font-size: 12px;">
+                        AMOUNT
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2" style="border-bottom:1px solid; border-bottom-style: dotted "></td>
@@ -216,7 +225,9 @@
             <table style="width: 95% !important;">
                 <tr>
                     <td style="text-align: left !important; font-size: small">Basic</td>
-                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->basic}}</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span
+                            style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->basic}}
+                    </td>
                 </tr>
             </table>
         </td>
@@ -224,7 +235,9 @@
             <table style="width: 100% !important;">
                 <tr>
                     <td style="text-align: left !important; font-size: small">Income Tax</td>
-                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->income_tax}}</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span
+                            style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->income_tax}}
+                    </td>
                 </tr>
             </table>
         </td>
@@ -235,15 +248,19 @@
             <table style="width: 95% !important;">
                 <tr>
                     <td style="text-align: left !important; font-size: small">House Rent Allowance</td>
-                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->hra}}</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span
+                            style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->hra}}
+                    </td>
                 </tr>
             </table>
         </td>
         <td>
             <table style="width: 100% !important;">
                 <tr>
-                    <td style="text-align: left !important; font-size: small">Provident Fund </td>
-                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->pf}}</td>
+                    <td style="text-align: left !important; font-size: small">Provident Fund</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span
+                            style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->pf}}
+                    </td>
                 </tr>
             </table>
         </td>
@@ -261,19 +278,23 @@
         <td>
             <table style="width: 100% !important;">
                 <tr>
-                    <td style="text-align: left !important; font-size: small">Professional Tax </td>
-                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->pt}}</td>
+                    <td style="text-align: left !important; font-size: small">Professional Tax</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span
+                            style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->pt}}
+                    </td>
                 </tr>
             </table>
         </td>
     </tr>
 
-    <tr style="background-color: #e3dfdf; width: 100%!important; padding: 10px;!important;" >
+    <tr style="background-color: #f3f0f0; width: 100%!important; padding: 10px;!important;">
         <td style="text-align: left !important">
             <table style="width: 95% !important;">
                 <tr>
                     <td style="text-align: left !important; font-weight: bold; font-size: 12px;">Gross Earnings</td>
-                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($grossEarnings, ',') }}</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span
+                            style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($grossEarnings, ',') }}
+                    </td>
                 </tr>
             </table>
         </td>
@@ -281,7 +302,9 @@
             <table style="width: 100% !important;">
                 <tr>
                     <td style="text-align: left !important; font-weight: bold; font-size: 12px;">Total Deductions</td>
-                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($totalDeductions, ',') }}</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span
+                            style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($totalDeductions, ',') }}
+                    </td>
                 </tr>
             </table>
         </td>
@@ -290,16 +313,16 @@
 
 
 <table
-    style="width: 100% !important; margin-top: 45px!important; border: 1px solid #c4cbd4 !important; border-radius: 10px; padding: 5px !important">
+    style="width: 100% !important; margin-top: 45px!important; border: 1px solid #c4cbd4 !important; border-radius: 10px;">
     <tr>
         <td style="text-align: left !important">
             <b style="font-weight: bold; font-family: 'Pacifico'; font-size: 15px;">TOTAL NET PAYABLE</b> <br>
             <span style="font-size: small"> Gross Earnings - Total Deductions</span>
         </td>
-        <td style="text-align: right !important;font-weight: bold;  width: 100px;
-  padding: 10px;
-  background-color: #edfcf1;
-  box-sizing: border-box;box-sizing: content-box;box-sizing: padding-box;">
+        <td style="text-align: right !important;font-weight: bold; width: 100px;
+              padding: 10px;
+              background-color: #edfcf1;
+              box-sizing: border-box;box-sizing: content-box;box-sizing: padding-box;">
             <span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($totalNetPayble, ',') }}
         </td>
     </tr>
