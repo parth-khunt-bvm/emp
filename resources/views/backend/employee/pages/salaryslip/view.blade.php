@@ -75,6 +75,7 @@ function AmountInWords(float $amount)
        }
    }
 </style>
+
 <div class="container">
     <div class="invoice-box">
     <div class="d-flex gap-4 align-items-center border-bottom my-4">
