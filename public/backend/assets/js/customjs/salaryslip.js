@@ -367,6 +367,110 @@ var Salaryslip = function(){
             $("#wd").val(getDaysInMonth(month, year));
         });
 
+        $("body").on("change","#month",function(){
+            var currentYear = new Date().getFullYear();
+            var month = $(this).val();
+            var html = '<option  value="">Select Salary Slip Year </option>';
+            var temp_html = '';
+            for (var i = 2015; i <= currentYear; i++) {
+                temp_html = '<option value="' + i + '">' + i + '</option>';
+                html = html + temp_html;
+            }
+            $("#year").html(html);
+
+            if(month == '' || month == null){
+
+                $("#year").attr("disabled","true");
+            }else{
+                $("#year").removeAttr("disabled");
+            }
+        });
+
+        $("body").on("change","#year",function(){
+            var month = $("#month").val();
+            var year = $(this).val();
+            $("#wd").val(getDaysInMonth(month, year));
+        });
+
+        function salaryCount(){
+            var salary = $("#basic").val();
+            var ext_tax_pr = $("#ext_tax_pr").val();
+            var hra_pr = $("#hra_pr").val();
+            var pro_tax_pr = $("#pro_tax_pr").val();
+            var ext_tax = countAmountFromPercentage(salary, ext_tax_pr);
+            var hra = countAmountFromPercentage(salary, hra_pr);
+            var pro_tax = countAmountFromPercentage(salary, pro_tax_pr);
+
+            $("#ext_tax").val(ext_tax.toFixed(2));
+            $("#hra").val(hra.toFixed(2));
+            $("#pro_tax").val(pro_tax.toFixed(2));
+        }
+
+
+
+        $("body").on("keyup","#hra_pr",function(){
+            var salary = $("#basic").val();
+            var hra_pr = $(this).val();
+            $("#hra").val(countAmountFromPercentage(salary, hra_pr).toFixed(2));
+        });
+
+        $("body").on("keyup","#hra",function(){
+            var salary = $("#basic").val();
+            var hra = $(this).val();
+            $("#hra_pr").val(countPercentageFromAmount(hra, salary).toFixed(2));
+        });
+
+        $("body").on("keyup","#income_tax_pr",function(){
+            var salary = $("#basic").val();
+            var income_tax_pr = $(this).val();
+            $("#income_tax").val(countAmountFromPercentage(salary, income_tax_pr).toFixed(2));
+        });
+
+        $("body").on("keyup","#income_tax",function(){
+            var salary = $("#basic").val();
+            var income_tax = $(this).val();
+            $("#income_tax_pr").val(countPercentageFromAmount(income_tax, salary).toFixed(2));
+        });
+
+        $("body").on("keyup","#pf_pr",function(){
+            var salary = $("#basic").val();
+            var pf_pr = $(this).val();
+            $("#pf").val(countAmountFromPercentage(salary, pf_pr).toFixed(2));
+        });
+
+        $("body").on("keyup","#pf",function(){
+            var salary = $("#basic").val();
+            var pf = $(this).val();
+            $("#pf_pr").val(countPercentageFromAmount(pf, salary).toFixed(2));
+        });
+
+
+        $("body").on("keyup","#pro_tax_pr",function(){
+            var salary = $("#basic").val();
+            var pro_tax_pr = $(this).val();
+            $("#pro_tax").val(countAmountFromPercentage(salary, pro_tax_pr).toFixed(2));
+        });
+
+        $("body").on("keyup","#pro_tax",function(){
+            var salary = $("#basic").val();
+            var pro_tax = $(this).val();
+            $("#pro_tax_pr").val(countPercentageFromAmount(pro_tax, salary).toFixed(2));
+        });
+
+        function countAmountFromPercentage(totalAmount, percentage){
+            if(totalAmount == 0 || percentage == 0 || totalAmount == null || percentage == null || totalAmount == '' || percentage == '' ){
+                return 0;
+            }
+            return (parseFloat(totalAmount) * parseFloat(percentage))/100;
+        }
+
+        function countPercentageFromAmount(amount, totalAmount){
+            if(amount == 0 || totalAmount == 0 || amount == null || totalAmount == null || amount == '' || totalAmount == '' ){
+                return 0;
+            }
+            return (parseFloat(amount) * 100) / parseFloat(totalAmount);
+        }
+
     }
 
     return {

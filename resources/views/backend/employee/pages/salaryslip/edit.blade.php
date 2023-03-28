@@ -1,6 +1,8 @@
 @extends('backend.employee.layout.layout')
 @section('section')
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
@@ -18,7 +20,7 @@
                 </div>
                 <!--begin::Form-->
                 <form class="form" id="edit-salary-slip-form" method="POST">@csrf
-
+                    <input class="form-control " type="hidden" id="editId" value="{{ $salarySlipDetails[0]->id }}" name="editId">
                     <div class="card-body">
                         <div class="col-12">
                             <h3 class="card-title" >EMPLOYEE DETAILS</h3>
@@ -32,7 +34,7 @@
                                         <select class="form-control"  id="empDepartment" name="empDepartment">
                                         <option value="">Select Employee Department</option>
                                             @foreach($menu as $key => $value)
-                                            <option value="{{ $value->id }}" {{ $salarySlipDetails[0]->empDepartment == $value->id ? 'selected="selected"': '' }}>{{ $value->department }}</option>
+                                                <option value="{{ $value->id }}" {{ $salarySlipDetails[0]->empDepartment == $value->id ? 'selected="selected"': '' }}>{{ $value->department }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -62,13 +64,17 @@
                                     </div>
                                 </div>
 
+
+
                             </div>
                         </div>
+
+
 
                         <div class="col-12">
                             <div class="row">
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Month<span class="text-danger">*</span></label>
                                         <select class="form-control" name="month" id="month">
@@ -89,7 +95,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Year<span class="text-danger">*</span></label>
                                         <select class="form-control" name="year" id="year" >
@@ -102,84 +108,76 @@
                                     </div>
                                 </div>
 
-                            </div>
-                        </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Pay Salary Date</label>
+                                        <input type="date" class="form-control" name="pay_salary" placeholder="Please enter your Pay Salary date"  value="{{ $salarySlipDetails[0]->pay_date }}"/>
+                                    </div>
+                                </div>
 
-                        <div class="col-12">
-                            <h3 class="card-title" >WORKING DETAILS</h3>
+
+                            </div>
                         </div>
 
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="" for="exampleSelect1">WD <span class="text-danger">*</span></label>
+                                        <label class="" for="exampleSelect1">BASIC SALARY <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="basic"  name="basic" value="{{ $salarySlipDetails[0]->basic }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="" for="exampleSelect1">WORKING DAY <span class="text-danger">*</span></label>
                                         <input class="form-control " type="number" id="wd" value="{{ $salarySlipDetails[0]->wd }}" name="wd">
                                     </div>
                                 </div>
-
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label>WO <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="wo" value="{{ $salarySlipDetails[0]->wo }}" name="wo">
+                                        <label class="" for="exampleSelect1">Loss Of Pay(LOP) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="lop"  name="lop"  value="{{ $salarySlipDetails[0]->lop }}">
                                     </div>
                                 </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>PH <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="ph" value="{{ $salarySlipDetails[0]->ph }}" name="ph">
-                                        <input class="form-control " type="hidden" id="editId" value="{{ $salarySlipDetails[0]->id }}" name="editId">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="" for="exampleSelect1">PD <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="pd" value="{{ $salarySlipDetails[0]->pd }}" name="pd">
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>LWP <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="lwp" value="{{ $salarySlipDetails[0]->lwp }}" name="lwp">
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
 
 
-                        <div class="col-12">
-                            <h3 class="card-title" >EARNING DETAILS</h3>
-                        </div>
 
                         <div class="col-12">
+                            <h3 class="card-title" >HOUSE RENT ALLOWANCE</h3>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label class="" for="exampleSelect1">BASIC <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="basic" value="{{ $salarySlipDetails[0]->basic }}" name="basic">
+                                        <label>HOUSE RENT ALLOWANCE(%) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="hra_pr" value="{{ $salarySlipDetails[0]->hra_pr }}" name="hra_pr">
                                     </div>
                                 </div>
-
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label>HRA <span class="text-danger">*</span></label>
+                                        <label>HOUSE RENT ALLOWANCE(Amount) <span class="text-danger">*</span></label>
                                         <input class="form-control " type="number" id="hra" value="{{ $salarySlipDetails[0]->hra }}" name="hra">
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <h3 class="card-title" >Income Tax</h3>
+                            <div class="row">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label>LEAVE ENCASH <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="leave_encash" value="{{ $salarySlipDetails[0]->leave_encash }}" name="leave_encash">
+                                        <label>Income Tax(%) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="income_tax_pr" value="{{ $salarySlipDetails[0]->income_tax_pr }}" name="income_tax_pr">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Income Tax(Amount) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="income_tax" value="{{ $salarySlipDetails[0]->income_tax }}" name="income_tax">
                                     </div>
                                 </div>
 
@@ -187,84 +185,45 @@
                         </div>
 
                         <div class="col-12">
+                            <h3 class="card-title" >Provident Fund </h3>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label class="" for="exampleSelect1">PRODUC <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="produc" value="{{ $salarySlipDetails[0]->produc }}" name="produc">
+                                        <label>Provident Fund (%) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="pf_pr" value="{{ $salarySlipDetails[0]->pf_pr }}" name="pf_pr">
                                     </div>
                                 </div>
-
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label>CONVEI <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="convei" value="{{ $salarySlipDetails[0]->convei }}" name="convei">
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>TRANSPORT <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="transport" value="{{ $salarySlipDetails[0]->transport }}" name="transport">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-12">
-                            <h3 class="card-title" >DEDUCTION DETAILS</h3>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="" for="exampleSelect1">P.F. <span class="text-danger">*</span></label>
+                                        <label>Provident Fund (Amount) <span class="text-danger">*</span></label>
                                         <input class="form-control " type="number" id="pf" value="{{ $salarySlipDetails[0]->pf }}" name="pf">
                                     </div>
                                 </div>
 
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>ESI <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="esi" value="{{ $salarySlipDetails[0]->esi }}" name="esi">
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>P.T. <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="pt" value="{{ $salarySlipDetails[0]->pt }}" name="pt">
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
 
                         <div class="col-12">
+                            <h3 class="card-title" >PROFESSIONAL Tax</h3>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label class="" for="exampleSelect1">TDS <span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="tds" value="{{ $salarySlipDetails[0]->tds }}" name="tds">
+                                        <label>PROFESSIONAL Tax(%) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="pro_tax_pr" value="{{ $salarySlipDetails[0]->pt_pr }}" name="pro_tax_pr">
                                     </div>
                                 </div>
-
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label>OTHER DEDUCTION<span class="text-danger">*</span></label>
-                                        <input class="form-control " type="number" id="other" value="{{ $salarySlipDetails[0]->other }}" name="other">
+                                        <label>PROFESSIONAL Tax(Amount) <span class="text-danger">*</span></label>
+                                        <input class="form-control " type="number" id="pro_tax" value="{{ $salarySlipDetails[0]->pt }}" name="pro_tax">
                                     </div>
                                 </div>
 
                             </div>
                         </div>
 
-
                         <div class="card-footer" style="padding-left: 15px !important">
-                            <button type="submit" class="btn btn-primary font-weight-bold mr-2">Update Salary Slip</button>
+                            <button type="submit" class="btn btn-primary font-weight-bold mr-2">Create Salary Slip</button>
                             <button type="reset" class="btn btn-light-primary font-weight-bold">Reset</button>
                         </div>
                     </div>
@@ -283,5 +242,10 @@
 </div>
 <!--end::Entry-->
 
+<script type="text/javascript">
+    $('.date').datepicker({
+       format: dd-mm-yyyy'
+     });
+</script>
 
 @endsection
