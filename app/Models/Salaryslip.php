@@ -59,8 +59,8 @@ class Salaryslip extends Model
         foreach ($resultArr as $row) {
             $month= ["","January","February","March","April","May","June","July","August","September","October","November","December"];
 
-            $actionhtml = '<a href="javascript:;" data-id="' . $row["id"] . '"  class="btn btn-icon sendMail" title="Send mail"><i class="fa fa-envelope text-info"></i></a>'
-            .'<a href="' . route('employee-salaryslip-download', $row['id']) . '"  class="btn btn-icon " title="Download Salary Slip"><i class="fa fa-download text-success" ></i></a>'
+//            $actionhtml = '<a href="javascript:;" data-id="' . $row["id"] . '"  class="btn btn-icon sendMail" title="Send mail"><i class="fa fa-envelope text-info"></i></a>'
+            $actionhtml = '<a href="' . route('employee-salaryslip-download', $row['id']) . '"  class="btn btn-icon " title="Download Salary Slip"><i class="fa fa-download text-success" ></i></a>'
             .'<a href="' . route('employee-salaryslip-view', $row['id']) . '" class="btn btn-icon" title="View Salary Slip Details"><i class="fa fa-eye text-primary" > </i></a>'
             .'<a href="' . route('employee-salaryslip-edit', $row['id']) . '" class="btn btn-icon" title="Edit Salary Slip"><i class="fa fa-edit text-warning"> </i></a>'
             .'<a href="#" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon  deleteSalarySlip" data-id="' . $row["id"] . '" ><i class="fa fa-trash text-danger" ></i></a>';

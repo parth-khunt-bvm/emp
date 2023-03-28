@@ -3,7 +3,9 @@
 <head>
     <title>{{ $salaryslipDetails[0]->firstname." ".$salaryslipDetails[0]->lastname }}</title>
 
-    <style>
+    <style type="text/css">
+
+
         @media print {
             .invoice-box {
                 padding: 0;
@@ -20,55 +22,54 @@
 
     </style>
 </head>
+@php
+    $month= ["","January","February","March","April","May","June","July","August","September","October","November","December"];
+    $grossEarnings =  numberformat($salaryslipDetails[0]->basic) + numberformat($salaryslipDetails[0]->hra) ;
+    $totalDeductions =  numberformat($salaryslipDetails[0]->income_tax) + numberformat($salaryslipDetails[0]->pf) + numberformat($salaryslipDetails[0]->pt) ;
+    $totalNetPayble = numberformat($grossEarnings) - numberformat($totalDeductions);
+
+    function AmountInWords(float $amount)
+    {
+       $amount_after_decimal = round($amount - ($num = floor($amount)), 2) * 100;
+       // Check if there is any number after decimal
+       $amt_hundred = null;
+       $count_length = strlen($num);
+       $x = 0;
+       $string = array();
+       $change_words = array(0 => '', 1 => 'One', 2 => 'Two',
+         3 => 'Three', 4 => 'Four', 5 => 'Five', 6 => 'Six',
+         7 => 'Seven', 8 => 'Eight', 9 => 'Nine',
+         10 => 'Ten', 11 => 'Eleven', 12 => 'Twelve',
+         13 => 'Thirteen', 14 => 'Fourteen', 15 => 'Fifteen',
+         16 => 'Sixteen', 17 => 'Seventeen', 18 => 'Eighteen',
+         19 => 'Nineteen', 20 => 'Twenty', 30 => 'Thirty',
+         40 => 'Forty', 50 => 'Fifty', 60 => 'Sixty',
+         70 => 'Seventy', 80 => 'Eighty', 90 => 'Ninety');
+        $here_digits = array('', 'Hundred','Thousand','Lakh', 'Crore');
+        while( $x < $count_length ) {
+          $get_divider = ($x == 2) ? 10 : 100;
+          $amount = floor($num % $get_divider);
+          $num = floor($num / $get_divider);
+          $x += $get_divider == 10 ? 1 : 2;
+          if ($amount) {
+           $add_plural = (($counter = count($string)) && $amount > 9) ? 's' : null;
+           $amt_hundred = ($counter == 1 && $string[0]) ? ' and ' : null;
+           $string [] = ($amount < 21) ? $change_words[$amount].' '. $here_digits[$counter]. $add_plural.'
+           '.$amt_hundred:$change_words[floor($amount / 10) * 10].' '.$change_words[$amount % 10]. '
+           '.$here_digits[$counter].$add_plural.' '.$amt_hundred;
+            }
+       else $string[] = null;
+       }
+       $implode_to_Rupees = implode('', array_reverse($string));
+       $get_paise = ($amount_after_decimal > 0) ? "And " . ($change_words[$amount_after_decimal / 10] . "
+       " . $change_words[$amount_after_decimal % 10]) . ' Paise' : '';
+       return ($implode_to_Rupees ? $implode_to_Rupees . 'Rupees ' : '') . $get_paise;
+    }
+
+@endphp
 <body>
 
 
-@php
-    $month= ["","January","February","March","April","May","June","July","August","September","October","November","December"];
-
-    $grossEarnings =  numberformat($salaryslipDetails[0]->basic) + numberformat($salaryslipDetails[0]->hra) ;
-    $totalDeductions =  numberformat($salaryslipDetails[0]->income_tax) + numberformat($salaryslipDetails[0]->pf) + numberformat($salaryslipDetails[0]->pt) ;
-    $totalNetPayble = numberformat($grossEarnings) - numberformat($totalDeductions) ;
-
-     function AmountInWords(float $amount)
-     {
-        $amount_after_decimal = round($amount - ($num = floor($amount)), 2) * 100;
-        // Check if there is any number after decimal
-        $amt_hundred = null;
-        $count_length = strlen($num);
-        $x = 0;
-        $string = array();
-        $change_words = array(0 => '', 1 => 'One', 2 => 'Two',
-          3 => 'Three', 4 => 'Four', 5 => 'Five', 6 => 'Six',
-          7 => 'Seven', 8 => 'Eight', 9 => 'Nine',
-          10 => 'Ten', 11 => 'Eleven', 12 => 'Twelve',
-          13 => 'Thirteen', 14 => 'Fourteen', 15 => 'Fifteen',
-          16 => 'Sixteen', 17 => 'Seventeen', 18 => 'Eighteen',
-          19 => 'Nineteen', 20 => 'Twenty', 30 => 'Thirty',
-          40 => 'Forty', 50 => 'Fifty', 60 => 'Sixty',
-          70 => 'Seventy', 80 => 'Eighty', 90 => 'Ninety');
-         $here_digits = array('', 'Hundred','Thousand','Lakh', 'Crore');
-         while( $x < $count_length ) {
-           $get_divider = ($x == 2) ? 10 : 100;
-           $amount = floor($num % $get_divider);
-           $num = floor($num / $get_divider);
-           $x += $get_divider == 10 ? 1 : 2;
-           if ($amount) {
-            $add_plural = (($counter = count($string)) && $amount > 9) ? 's' : null;
-            $amt_hundred = ($counter == 1 && $string[0]) ? ' and ' : null;
-            $string [] = ($amount < 21) ? $change_words[$amount].' '. $here_digits[$counter]. $add_plural.'
-            '.$amt_hundred:$change_words[floor($amount / 10) * 10].' '.$change_words[$amount % 10]. '
-            '.$here_digits[$counter].$add_plural.' '.$amt_hundred;
-             }
-        else $string[] = null;
-        }
-        $implode_to_Rupees = implode('', array_reverse($string));
-        $get_paise = ($amount_after_decimal > 0) ? "And " . ($change_words[$amount_after_decimal / 10] . "
-        " . $change_words[$amount_after_decimal % 10]) . ' Paise' : '';
-        return ($implode_to_Rupees ? $implode_to_Rupees . 'Rupees ' : '') . $get_paise;
-     }
-
-@endphp
 <!--begin::Entry-->
 <table style="width: 100%">
     <tr>
@@ -81,19 +82,21 @@
         <td>
             <p style="font-family: 'Times New Roman', serif !important; font-size: 20px !important; margin-bottom: -10px;">
                 BVM Infotech</p>
-            <p style="font-size: 10px!important; color:gray!">
+            <p style="font-size: 14px!important; color:gray!important;">
                 1049-1051, Silver Business Point,near Uttran Surat - 394105 India
             </p>
         </td>
 
         <td style="text-align: right!important">
             <p style="margin-bottom: -10px;">Payslip For the Month</p>
-            <p>January 2023</p>
+            <p><b>
+                    {{ $month[$salaryslipDetails[0]->month] }} {{ $salaryslipDetails[0]->year }}
+                </b></p>
         </td>
     </tr>
 </table>
 
-<div style="border-bottom:1px solid gray !important"></div>
+<div style="border-bottom:1px solid #c4cbd4 !important"></div>
 
 <table style="width: 100% !important; margin-top: 15px!important">
     <tr>
@@ -109,15 +112,15 @@
                     <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">
                         Employee Name
                     </td>
-                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; font-style: bold">
-                        : {{ $salaryslipDetails[0]->firstname." ".$salaryslipDetails[0]->lastname }}</td>
+                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important;">
+                        :  {{ $salaryslipDetails[0]->firstname." ".$salaryslipDetails[0]->lastname }}</td>
                 </tr>
 
                 <tr>
                     <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">
                         Employee ID
                     </td>
-                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; font-style: bold">
+                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important;">
                         : {{ $salaryslipDetails[0]->emp_no}}</td>
                 </tr>
 
@@ -125,7 +128,7 @@
                     <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">
                         Pay Period
                     </td>
-                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; font-style: bold">
+                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important;">
                         : {{ $month[$salaryslipDetails[0]->month] }}
                         - {{ $salaryslipDetails[0]->year }}</td>
                 </tr>
@@ -134,24 +137,31 @@
                     <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; color:gray">
                         Pay Date
                     </td>
-                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important; font-style: bold">
+                    <td style="margin-top: 10px !important;padding-top: 10px !important; font-size: 14px!important;">
                         : {{ date_formate($salaryslipDetails[0]->pay_date) }}</td>
                 </tr>
 
             </table>
         </td>
-        <td align="right" style="text-align: right; width: 80%!important; ">
+        <td style="float:right; text-align: right; ">
             <table
-                style="width: 100% !important; border: 1px solid #c4cbd4; border-radius: 10px !important">
-                <tr style="background-color: #edfcf1; text-align: left; margin-left: ">
-                    <td colspan="2">
-                        <p><span
-                                style="font-size: 20px!important; color:black">{{ numberformat($totalNetPayble, ',') }}</span><br>
+                style="width: 80% !important;  margin: 0px 140px; margin-left: 50px; border: 1px solid #c4cbd4; border-radius: 10px !important">
+                <tr style="background-color: #edfcf1; text-align: left;">
+                    <td colspan="2" >
+                        <p style="font-size: 20px!important; color:black;
+                                padding: 2px;
+                                margin: 15px 0 15px 15px;
+                                /*font-size: 18px;*/
+                                box-sizing: border-box;
+                                /*position: relative;*/
+                                border-left: 3px solid #17dc3f;
+                                padding-left: 15px;">
+                            <span style="font-size: large; font-weight: bold"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($totalNetPayble, ',') }}</span><br>
                             Employee Net Pay</p>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="border-bottom:1px solid; border-bottom-style: dotted ">
+                    <td colspan="2" style="border-bottom:1px solid; border-bottom-style: dotted;">
                     </td>
                 </tr>
                 <tr style="">
@@ -174,97 +184,14 @@
     </tr>
 </table>
 
-{{--<div style="margin-bottom: 30px;"></div>--}}
-
-{{--<div class="float-start">--}}
-{{--    <div class="d-flex flex-column">--}}
-{{--        <div class="mt-2">--}}
-{{--            <table style=" width: 100%; border: 1px solid; padding: 8px; border-radius: 10px;">--}}
-{{--                <tr>--}}
-{{--                <tr>--}}
-{{--                    <td>--}}
-{{--                        <table>--}}
-{{--                            <tr>--}}
-{{--                                <td>EARNINGS</td>--}}
-{{--                                <td>AMOUNT</td>--}}
-{{--                            </tr>--}}
-
-{{--                            <tr>--}}
-{{--                                <td colspan="2" style="border-bottom:1px solid; border-bottom-style: dotted "></td>--}}
-{{--                            </tr>--}}
-
-{{--                            <tr>--}}
-{{--                                <td>Basic</td>--}}
-{{--                                <td>: {{ $salaryslipDetails[0]->basic}}</td>--}}
-{{--                            </tr>--}}
-
-{{--                            <tr>--}}
-{{--                                <td>House Rent Allowance</td>--}}
-{{--                                <td>: {{ $salaryslipDetails[0]->hra}}</td>--}}
-{{--                            </tr>--}}
-
-{{--                            <tr>--}}
-{{--                                <td>&nbsp;</td>--}}
-{{--                                <td>&nbsp;</td>--}}
-{{--                            </tr>--}}
-
-{{--                            <tr bgcolor="gray">--}}
-{{--                                <td>Gross Earnings</td>--}}
-{{--                                <td>: {{ numberformat($grossEarnings, ',') }}</td>--}}
-{{--                            </tr>--}}
-{{--                        </table>--}}
-{{--                    </td>--}}
-{{--                    <td>--}}
-{{--                        <table>--}}
-{{--                            <tr>--}}
-{{--                                --}}{{--                                    <td style="margin-bottom: 50px;">DEDUCTIONSY</td>--}}
-{{--                                <td>DEDUCTIONSY</td>--}}
-{{--                                <td>AMOUNT</td>--}}
-{{--                            </tr>--}}
-{{--                            <tr>--}}
-{{--                                <td colspan="2" style="border-bottom:1px solid; border-bottom-style: dotted "></td>--}}
-{{--                            </tr>--}}
-
-{{--                            <tr>--}}
-{{--                                <td>Income Tax</td>--}}
-{{--                                <td>: {{ $salaryslipDetails[0]->income_tax}}</td>--}}
-{{--                            </tr>--}}
-
-{{--                            <tr>--}}
-{{--                                <td>Provident Fund</td>--}}
-{{--                                <td>: {{ $salaryslipDetails[0]->pf}}</td>--}}
-{{--                            </tr>--}}
-
-{{--                            <tr>--}}
-{{--                                <td>Professional Tax</td>--}}
-{{--                                <td>: {{ $salaryslipDetails[0]->pt}}</td>--}}
-{{--                            </tr>--}}
-
-{{--                            <tr bgcolor="gray">--}}
-{{--                                <td>Total Deductions</td>--}}
-{{--                                <td>: {{ numberformat($totalDeductions, ',') }}</td>--}}
-{{--                            </tr>--}}
-{{--                        </table>--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
-{{--                </tr>--}}
-{{--            </table>--}}
-
-{{--            </table>--}}
-{{--            <!--end table-->--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
-
 <table
-    style="width: 100% !important; margin-top: 45px!important; border: 1px solid #c4cbd4 !important; border-radius: 10px; padding: 5px !important">
+    style="width: 100% !important; margin-top: 45px!important; border: 1px solid #c4cbd4 !important; border-radius: 10px; padding: -7   px !important">
     <tr>
         <td style="text-align: left !important">
-            <table style="width: 100% !important;">
+            <table style="width: 95% !important;">
                 <tr>
-                    <td style="text-align: left !important">EARNINGS</td>
-                    <td style="text-align: right !important">AMOUNT</td>
+                    <td style="text-align: left !important; padding: 5px!important; font-weight: bold; font-size: 12px; ">EARNINGS</td>
+                    <td style="text-align: right !important; padding: 5px!important; font-weight: bold; font-size: 12px;">AMOUNT</td>
                 </tr>
                 <tr>
                     <td colspan="2" style="border-bottom:1px solid; border-bottom-style: dotted "></td>
@@ -274,8 +201,8 @@
         <td>
             <table style="width: 100% !important;">
                 <tr>
-                    <td style="text-align: left !important">DEDUCTIONS</td>
-                    <td style="text-align: right !important">AMOUNT</td>
+                    <td style="text-align: left !important; font-weight: bold; padding: 5px!important; font-size: 12px;">DEDUCTIONS</td>
+                    <td style="text-align: right !important; font-weight: bold; padding: 5px!important; font-size: 12px;">AMOUNT</td>
                 </tr>
                 <tr>
                     <td colspan="2" style="border-bottom:1px solid; border-bottom-style: dotted "></td>
@@ -286,18 +213,18 @@
 
     <tr>
         <td style="text-align: left !important">
-            <table style="width: 100% !important;">
+            <table style="width: 95% !important;">
                 <tr>
-                    <td style="text-align: left !important">Basic</td>
-                    <td style="text-align: right !important">{{ $salaryslipDetails[0]->basic}}</td>
+                    <td style="text-align: left !important; font-size: small">Basic</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->basic}}</td>
                 </tr>
             </table>
         </td>
         <td>
             <table style="width: 100% !important;">
                 <tr>
-                    <td style="text-align: left !important">Income Tax</td>
-                    <td style="text-align: right !important">{{ $salaryslipDetails[0]->income_tax}}</td>
+                    <td style="text-align: left !important; font-size: small">Income Tax</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->income_tax}}</td>
                 </tr>
             </table>
         </td>
@@ -305,46 +232,26 @@
 
     <tr>
         <td style="text-align: left !important">
-            <table style="width: 100% !important;">
+            <table style="width: 95% !important;">
                 <tr>
-                    <td style="text-align: left !important">House Rent Allowance</td>
-                    <td style="text-align: right !important">{{ $salaryslipDetails[0]->hra}}</td>
+                    <td style="text-align: left !important; font-size: small">House Rent Allowance</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->hra}}</td>
                 </tr>
             </table>
         </td>
         <td>
             <table style="width: 100% !important;">
                 <tr>
-                    <td style="text-align: left !important">Provident Fund </td>
-                    <td style="text-align: right !important">{{ $salaryslipDetails[0]->pf}}</td>
+                    <td style="text-align: left !important; font-size: small">Provident Fund </td>
+                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->pf}}</td>
                 </tr>
             </table>
         </td>
     </tr>
 
-
-{{--    <tr>--}}
-{{--        <td style="text-align: left !important">--}}
-{{--            <table style="width: 100% !important;">--}}
-{{--                <tr>--}}
-{{--                    <td style="text-align: left !important">EARNINGS</td>--}}
-{{--                    <td style="text-align: right !important">AMOUNT</td>--}}
-{{--                </tr>--}}
-{{--            </table>--}}
-{{--        </td>--}}
-{{--        <td>--}}
-{{--            <table style="width: 100% !important;">--}}
-{{--                <tr>--}}
-{{--                    <td style="text-align: left !important">EARNINGS</td>--}}
-{{--                    <td style="text-align: right !important">AMOUNT</td>--}}
-{{--                </tr>--}}
-{{--            </table>--}}
-{{--        </td>--}}
-{{--    </tr>--}}
-
     <tr>
         <td style="text-align: left !important">
-            <table style="width: 100% !important;">
+            <table style="width: 95% !important;">
                 <tr>
                     <td style="text-align: left !important"></td>
                     <td style="text-align: right !important"></td>
@@ -354,27 +261,27 @@
         <td>
             <table style="width: 100% !important;">
                 <tr>
-                    <td style="text-align: left !important">Professional Tax </td>
-                    <td style="text-align: right !important">{{ $salaryslipDetails[0]->pt}}</td>
+                    <td style="text-align: left !important; font-size: small">Professional Tax </td>
+                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ $salaryslipDetails[0]->pt}}</td>
                 </tr>
             </table>
         </td>
     </tr>
 
-    <tr style="background-color: #cec7c7; width: 100%!important;" >
+    <tr style="background-color: #e3dfdf; width: 100%!important; padding: 10px;!important;" >
         <td style="text-align: left !important">
-            <table style="width: 100% !important;">
+            <table style="width: 95% !important;">
                 <tr>
-                    <td style="text-align: left !important">Gross Earnings</td>
-                    <td style="text-align: right !important">{{ numberformat($grossEarnings, ',') }}</td>
+                    <td style="text-align: left !important; font-weight: bold; font-size: 12px;">Gross Earnings</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($grossEarnings, ',') }}</td>
                 </tr>
             </table>
         </td>
         <td>
             <table style="width: 100% !important;">
                 <tr>
-                    <td style="text-align: left !important">Total Deductions</td>
-                    <td style="text-align: right !important">{{ numberformat($totalDeductions, ',') }}</td>
+                    <td style="text-align: left !important; font-weight: bold; font-size: 12px;">Total Deductions</td>
+                    <td style="text-align: right !important; font-weight: bold;"><span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($totalDeductions, ',') }}</td>
                 </tr>
             </table>
         </td>
@@ -386,52 +293,18 @@
     style="width: 100% !important; margin-top: 45px!important; border: 1px solid #c4cbd4 !important; border-radius: 10px; padding: 5px !important">
     <tr>
         <td style="text-align: left !important">
-            TOTAL NET PAYABLE <br>
+            <b style="font-weight: bold; font-family: 'Pacifico'; font-size: 15px;">TOTAL NET PAYABLE</b> <br>
             <span style="font-size: small"> Gross Earnings - Total Deductions</span>
         </td>
-        <td style="text-align: right !important">
-            120000
+        <td style="text-align: right !important;font-weight: bold;  width: 100px;
+  padding: 10px;
+  background-color: #edfcf1;
+  box-sizing: border-box;box-sizing: content-box;box-sizing: padding-box;">
+            <span style="font-family: DejaVu Sans; sans-serif;">&#8377;</span>{{ numberformat($totalNetPayble, ',') }}
         </td>
     </tr>
 </table>
 
-<div style="margin-bottom: 30px;"></div>
-
-<div class="float-start">
-    <div class="d-flex flex-column">
-        <div class="mt-2">
-            <table style=" width: 100%; border: 1px solid; padding: 8px; border-radius: 10px;">
-                <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <td>TOTAL NET PAYABLE <br>
-                                    <span style="font-size: small"> Gross Earnings - Total Deductions</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table style="background-color: #edfcf1;
-                                                      width: 100% !important;
-                                                      float: right;
-                                                      text-align: center;
-                                                      margin-right: 0px;
-                                                      padding: 15px 0px;
-                                                    ">
-                            <tr>
-                                <td style="">{{ numberformat($totalNetPayble, ',') }}</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-
-            </table>
-            <!--end table-->
-        </div>
-    </div>
-</div>
 <h6 style="float: right;font-size: small">
     <span class="text-muted">Amount In Words</span>
     : {{ AmountInWords(numberformat($totalNetPayble)) }}
